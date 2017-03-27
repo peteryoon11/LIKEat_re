@@ -9,7 +9,7 @@
 <title>LIKEat!</title>    
 </head>
 <body>
-<jsp:include page="includeTop/topNav.jsp" />
-<jsp:include page="member/login.jsp" />
+	<jsp:include page="includeTop/topNav.jsp" />
+	<jsp:include page="member/login.jsp" />
 </body>
 </html>
