@@ -68,8 +68,10 @@ public class DetailPageController extends HttpServlet {
 		'https://mp-seoul-image-production-s3.mangoplate.com/184317/725763_1487384004579_9918'
 		);*/
 		request.setAttribute("Rdata", dto);
+		String target="detail.jsp";
+		//RequestDispatcher dis = request.getRequestDispatcher("TestSource/Detailtest/Detail.jsp");
+		RequestDispatcher dis = request.getRequestDispatcher(target);
 		
-		RequestDispatcher dis = request.getRequestDispatcher("TestSource/Detailtest/Detail.jsp");
 		dis.forward(request, response);
 	}
 
