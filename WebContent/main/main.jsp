@@ -141,17 +141,16 @@
 	                $.ajax({
 	                    type : 'get',  // list를 요청하는 것이므로, get방식으로 보내도 될듯
 	                    url : 'main/infiniteScrollList.jsp',// 요청할 서버의 url
-//	                    headers : {
-//	                        "Content-Type" : "application/json",
-//	                        "X-HTTP-Method-Override" : "POST"
-//	                    },
+	                    headers : {
+	                        "Content-Type" : "application/json",
+	                        "X-HTTP-Method-Override" : "get"
+	                    },
 	                    dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
 //	                    data : JSON.stringify({ // 서버로 보낼 데이터 명시
 						data : {	
 							curPage:$("#curPage").val()
 	                    },
 	                    success : function(responseData){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
-								                    	
 	                    	 var str = "";
 	                        // 5. 받아온 데이터가 ""이거나 null이 아닌 경우에 DOM handling을 해준다.
 	                        if(responseData != ""){
@@ -188,13 +187,17 @@
 	                            $("#neweatList").after(str);
 	                            
 	                            
-                                curPage = responseData;
 	                            
 	                        }// if : data!=null
 	                        else{ // 9. 만약 서버로 부터 받아온 데이터가 없으면 그냥 아무것도 하지말까..
 	                            alert("더 불러올 데이터가 없습니다.");
 	                        }// else
-	                    }// success
+	                    },// success
+	                    error:function(request,status,error){
+	                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+							console.log("데이터타입 : " + request);
+
+	                    }
 	                });// ajax
 	                 
 	                // 여기서 class가 listToChange인 것중 가장 처음인 것을 찾아서 그 위치로 이동하자.
