@@ -23,13 +23,15 @@ public class StoreDTO {
 	private String imgSrc2;
 	private String imgSrc3;
 	private String imgSrc4;
+	private String createAt;
 	
 	public StoreDTO() {
 	}
 
 	public StoreDTO(String sid, String sname, int shour1, int shour2, String post1, String post2, String addr1,
 			String addr2, String scategory, String sphone1, String sphone2, String sphone3, String menu, int sprice,
-			char parking, int rating, int ratingCnt, String imgSrc1, String imgSrc2, String imgSrc3, String imgSrc4) {
+			char parking, int rating, int ratingCnt, String imgSrc1, String imgSrc2, String imgSrc3, String imgSrc4,
+			String createAt) {
 		super();
 		this.sid = sid;
 		this.sname = sname;
@@ -52,6 +54,7 @@ public class StoreDTO {
 		this.imgSrc2 = imgSrc2;
 		this.imgSrc3 = imgSrc3;
 		this.imgSrc4 = imgSrc4;
+		this.createAt = createAt;
 	}
 
 	public String getSid() {
@@ -222,6 +225,14 @@ public class StoreDTO {
 		this.imgSrc4 = imgSrc4;
 	}
 
+	public String getCreateAt() {
+		return createAt;
+	}
+
+	public void setCreateAt(String createAt) {
+		this.createAt = createAt;
+	}
+
 	@Override
 	public String toString() {
 		return "StoreDTO [sid=" + sid + ", sname=" + sname + ", shour1=" + shour1 + ", shour2=" + shour2 + ", post1="
@@ -229,7 +240,9 @@ public class StoreDTO {
 				+ ", sphone1=" + sphone1 + ", sphone2=" + sphone2 + ", sphone3=" + sphone3 + ", menu=" + menu
 				+ ", sprice=" + sprice + ", parking=" + parking + ", rating=" + rating + ", ratingCnt=" + ratingCnt
 				+ ", imgSrc1=" + imgSrc1 + ", imgSrc2=" + imgSrc2 + ", imgSrc3=" + imgSrc3 + ", imgSrc4=" + imgSrc4
-				+ "]";
+				+ ", createAt=" + createAt + "]";
 	}
+
+	
 
 }
