@@ -69,6 +69,7 @@ public class DetailPageController extends HttpServlet {
 		);*/
 		request.setAttribute("Rdata", dto);
 		System.out.println("1");
+		System.out.println("2");
 		RequestDispatcher dis = request.getRequestDispatcher("TestSource/Detailtest/Detail.jsp");
 		dis.forward(request, response);
 	}
