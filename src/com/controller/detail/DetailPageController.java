@@ -70,9 +70,12 @@ public class DetailPageController extends HttpServlet {
 		request.setAttribute("Rdata", dto);
 		String target="detail.jsp";
 		//RequestDispatcher dis = request.getRequestDispatcher("TestSource/Detailtest/Detail.jsp");
+		response.sendRedirect(target);
+	/*	
 		RequestDispatcher dis = request.getRequestDispatcher(target);
 		
 		dis.forward(request, response);
+	*/
 	}
 
 	/**
