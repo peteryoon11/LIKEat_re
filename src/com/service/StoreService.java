@@ -28,7 +28,6 @@ public class StoreService {
 //	}//selectAll
 
 	public PageDTO selectPage(int curPage) throws LikeatException {
-		
 
 		SqlSession session = MySqlSessionFactory.openMySession();
 
@@ -57,6 +56,10 @@ public class StoreService {
 	}//selectAll
 	
 	
+	public PageDTO selectTop() {
+		
+		return null;
+	}
 	
 	
 	public int totRecord() throws LikeatException {
@@ -72,6 +75,8 @@ public class StoreService {
 		}
 		return cnt;
 	}//totRecord
-	
+
+
+
 
 }

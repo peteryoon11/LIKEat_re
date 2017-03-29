@@ -29,6 +29,7 @@ public class LikeatMainController extends HttpServlet {
 		
 		try {
 			PageDTO pageDTO = service.selectPage(curPage);
+			PageDTO topDTO = service.selectTop();
 			request.setAttribute("pageDTO", pageDTO);
 			target = "main.jsp";
 		} catch (LikeatException e) {

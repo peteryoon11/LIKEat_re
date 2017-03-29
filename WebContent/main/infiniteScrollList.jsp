@@ -6,14 +6,15 @@
 <%@page import="com.dao.MySqlSessionFactory"%>
 <%@page import="org.apache.ibatis.session.SqlSession"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
-int curPage = Integer.parseInt(request.getParameter("curPage")) + 1;
+int curPage = Integer.parseInt(request.getParameter("curPage"));
 
 System.out.println("curPage========================>" + curPage);
 
-
 SqlSession sqlSession = MySqlSessionFactory.openMySession();
-
 
 int cnt = 0;
 List<StoreDTO> list = null;
@@ -32,6 +33,7 @@ try{
 	
 	System.out.println("list========================>" + pageDTO.getList());
 	
+	request.setAttribute("pageDTO", pageDTO);
 } catch(Exception e) {	
 	
 	e.printStackTrace();
@@ -42,11 +44,28 @@ try{
 	sqlSession.close();
 	
 }
-
-
 %>
-{
-
- "pageDTO" : <%=pageDTO %>
-
-}
+    <section class="no-padding neweatList" id="portfolio">
+        <div class="container">
+            <div class="row popup-gallery">
+				<c:forEach items="${pageDTO.list}" var="s" varStatus="i">
+					<div class="col-lg-3 col-sm-6">
+					    <a href="${s.imgSrc1}" class="portfolio-box">
+					        <img src="${s.imgSrc1}" class="img-responsive" alt="" >
+					        <div class="portfolio-box-caption">
+					            <div class="portfolio-box-caption-content">
+					                <div class="project-category text-faded">
+					                    ${s.sname}
+					                </div>
+					                <div class="project-name">
+					                    ${s.sid}
+					                    <input type="hidden" id="curPage" name="curPage"  value="${pageDTO.curPage}">
+					                </div>
+					            </div>
+					        </div>
+					    </a>
+					</div>
+            	</c:forEach>
+ 			</div>
+        </div>
+    </section>

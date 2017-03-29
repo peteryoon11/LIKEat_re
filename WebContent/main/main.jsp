@@ -114,10 +114,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+	    var curPage = 2;
 
 	    var lastScrollTop = 0;
 	    var easeEffect = 'easeInQuint';
-	    var curPage = "";
 	     
 	    // 1. 스크롤 이벤트 발생
 	    $(window).scroll(function(){ // ① 스크롤 이벤트 최초 발생
@@ -132,62 +132,26 @@
 	            console.log("down-scroll");
 	             
 	            // 2. 현재 스크롤의 top 좌표가  > (게시글을 불러온 화면 height - 윈도우창의 height) 되는 순간
-	            if ($(window).scrollTop() >= ($(document).height() - $(window).height()) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
-	                 
+	            if ($(window).scrollTop() == ($(document).height() - $(window).height()) ){ //② 현재스크롤의 위치가 화면의 보이는 위치보다 크다면
 	                // 3. 현재 뿌려진 게시글의 curPage정보를 받아와, 다음페이지 분량의 list를 받아온다
-//	                var curPage = $("#curPage").val();
-	                 
+//	                curPage = $("#curPage").val();
+//	            	curPage++;
 	                // 4. ajax를 이용하여 다음페이지의 게시물 데이터를 받아온다.
 	                $.ajax({
 	                    type : 'get',  // list를 요청하는 것이므로, get방식으로 보내도 될듯
 	                    url : 'main/infiniteScrollList.jsp',// 요청할 서버의 url
-	                    headers : {
-	                        "Content-Type" : "application/json",
-	                        "X-HTTP-Method-Override" : "get"
-	                    },
-	                    dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
-//	                    data : JSON.stringify({ // 서버로 보낼 데이터 명시
 						data : {	
-							curPage:$("#curPage").val()
+							curPage:curPage
 	                    },
-	                    success : function(responseData){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
-	                    	 var str = "";
+	                    success : function(html){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
 	                        // 5. 받아온 데이터가 ""이거나 null이 아닌 경우에 DOM handling을 해준다.
-	                        if(responseData != ""){
-//	                            //6. 서버로부터 받아온 data가 list이므로 이 각각의 원소에 접근하려면 each문을 사용한다.
-//	                            // 7. 새로운 데이터를 갖고 html코드형태의 문자열을 만들어준다.
+	                        if(html != ""){
 	                            // 8. 이전까지 뿌려졌던 데이터를 비워주고, <th>헤더 바로 밑에 위에서 만든 str을  뿌려준다.
-//                                $(responseData.list).each(
-//                                		function() {
-                                			str += "<section class='no-padding' id='portfolio'>"
-                                				+ 		"<div class='container'>"
-	                                			+			"<div class='row popup-gallery'>"
-                                    			+				"<c:forEach items='${pageDTO.list}' var='s' varStatus='i'>"
-                                    			+					"<div class='col-lg-3 col-sm-6'>"
-                                    			+						"<a href='${s.imgSrc1}' class='portfolio-box'>"
-                                    			+							"<img src='${s.imgSrc1}' class='img-responsive' alt='' >"
-                                    			+							"<div class='portfolio-box-caption'>"
-                                    			+								"<div class='portfolio-box-caption-content'>"
-                                   				+									"<div class='project-category text-faded'>"
-                                   				+										${s.sname}
-                                    			+									"</div>"
-                                    			+									"<div class='project-name'>"
-                                    			+										${s.sid}
-                                    			+										"<input type='hidden' id='curPage' name='curPage'  value='${pageDTO.curPage}'>"
-                                    			+									"</div>"
-                                    			+								"</div>"
-                                    			+							"</div>"
-                                    			+						"</a>"
-                                    			+					"</div>"
-                                    			+				"</c:forEach>"
-                                    			+			"</div>"
-                                    			+		"</div>"
-                                    			+	"</section>"
-//                                		}
-	                            $("#neweatList").after(str);
-	                            
-	                            
-	                            
+//	                            $("#inputData").html(html);
+	                            console.log("성공!! ============> ");
+	                            $(".neweatList").last().after(html);
+	                            console.log("현재페이지 ===============> " + curPage);
+	                            curPage++;
 	                        }// if : data!=null
 	                        else{ // 9. 만약 서버로 부터 받아온 데이터가 없으면 그냥 아무것도 하지말까..
 	                            alert("더 불러올 데이터가 없습니다.");
@@ -195,104 +159,24 @@
 	                    },// success
 	                    error:function(request,status,error){
 	                        console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
-							console.log("데이터타입 : " + request);
-
 	                    }
 	                });// ajax
 	                 
 	                // 여기서 class가 listToChange인 것중 가장 처음인 것을 찾아서 그 위치로 이동하자.
-	                var position = $(".neweatListClass:eq(" + (curPage - 1) + ")").offset();// 위치 값
-	                 
+	                var position = $(".project-name").last().offset();// 위치 값
 	                // 이동  위로 부터 position.top px 위치로 스크롤 하는 것이다. 그걸 500ms 동안 애니메이션이 이루어짐.
 	                $('html,body').stop().animate({scrollTop : position.top }, 600, easeEffect);
-	     
-
 	                }//if : 현재 스크롤의 top 좌표가  > (게시글을 불러온 화면 height - 윈도우창의 height) 되는 순간
 	             
 	            // lastScrollTop을 현재 currentScrollTop으로 갱신해준다.
-	            lastScrollTop = currentScrollTop;
+//	            lastScrollTop = currentScrollTop;
 	        }// 다운스크롤인 상태
 	         
 	        /* 
-	            =================   업 스크롤인 상태   ================
+	            =================   업 스크롤인 상태(미포)   ================
 	        */
-/*	        else{
-	            // up- scroll : 현재 게시글 이전의 글을 불러온다.
-	            console.log("up-scroll");          
+		});// scroll event
 	 
-	            // 2. 현재 스크롤의 top 좌표가  <= 0 되는 순간
-	            if ($(window).scrollTop() <= 0 ){ //
-	                 
-	                // 3. class가 scrolling인 것의 요소 중 첫 번째 요소를 선택한 다음 그것의 data-bno속성 값을 받아온다.
-	                //      즉, 현재 뿌려진 게시글의 첫 번째 bno값을 읽어오는 것이다.( 이 전의 게시글들을 가져오기 위해 필요한 데이터이다.)
-	                var firstbno = $(".scrolling:first").attr("data-bno");
-	                 
-	                // 4. ajax를 이용하여 현재 뿌려진 게시글의 첫 번째 bno를 서버로 보내어 그 이전의 20개의 게시물 데이터를 받아온다.
-	                $.ajax({
-	                    type : 'post',  // 요청 method 방식
-	                    url : 'infiniteScrollUp',// 요청할 서버의 url
-	                    headers : {
-	                        "Content-Type" : "application/json",
-	                        "X-HTTP-Method-Override" : "POST"
-	                    },
-	                    dataType : 'json', // 서버로부터 되돌려받는 데이터의 타입을 명시하는 것이다.
-	                    data : JSON.stringify({ // 서버로 보낼 데이터 명시
-	                        bno : firstbno
-	                    }),
-	                    success : function(data){// ajax 가 성공했을시에 수행될 function이다. 이 function의 파라미터는 서버로 부터 return받은 데이터이다.
-	                         
-	                        var str = "";
-	                         
-	                        // 5. 받아온 데이터가 ""이거나 null이 아닌 경우에 DOM handling을 해준다.
-	                        // 이때 서버에서 값이 없으면 null을 던질줄 알았는데 ""를 던진다. 따라서 (data != null) 이라는 체크를 해주면 안되고, (data != "") 만 해주어야한다.
-	                        // 이건아마 컨트롤러의 리턴타입이 @ResponseBody로 json형태로 던져지는데 이때 아마 아무것도 없는게 ""로 명시되어 날아오는것 같다.
-	                        if(data != ""){
-	                             
-	                            //6. 서버로부터 받아온 data가 list이므로 이 각각의 원소에 접근하려면 each문을 사용한다.
-	                            $(data).each(
-	                                // 7. 새로운 데이터를 갖고 html코드형태의 문자열을 만들어준다.
-	                                function(){
-	                                    console.log(this);     
-	                                    str +=  "<tr class=" + "'listToChange'" + ">"
-	                                        +       "<td class=" +  "'scrolling'" + " data-bno='" + this.bno +"'>"
-	                                        +           this.bno
-	                                        +       "</td>"
-	                                        +       "<td>" + this.title + "</td>"      
-	                                        +       "<td>" + this.writer + "</td>"
-	                                        +       "<td>" + this.regdate + "</td>"
-	                                        +       "<td>" + this.viewcnt + "</td>"
-	                                        +   "</tr>";
-	                                         
-	                            });// each
-	                            // 8. 이전까지 뿌려졌던 데이터를 비워주고, <th>헤더 바로 밑에 위에서 만든 str을  뿌려준다.
-	                            $(".listToChange").empty();// 셀렉터 태그 안의 모든 텍스트를 지운다.                       
-	                            $(".scrollLocation").after(str);
-	                                 
-	                        }//if : data != ""
-	                        else{ // 9. 만약 서버로 부터 받아온 데이터가 없으면 그냥 아무것도 하지말까..??
-	                             
-	                            alert("더 불러올 데이터가 없습니다.");
-	                        }// else
-	     
-	                    }// success
-	                });// ajax
-	                 
-	                // 스크롤 다운이벤트 때  ajax통신이 발생하지 않을때 까지의 좌표까지 스크롤을 내려가주기.
-	                var position =($(document).height() - $(window).height()) -10;
-	                 
-	                // 이동  위로 부터 position.top px 위치로 스크롤 하는 것이다. 그걸 500ms 동안 애니메이션이 이루어짐.
-	                $('html,body').stop().animate({scrollTop : position}, 600, easeEffect);
-	                 
-	            }//if : 현재 스크롤의 top 좌표가  <= 0 되는 순간
-	         
-	            // lastScrollTop을 현재 currentScrollTop으로 갱신해준다.
-	            lastScrollTop = currentScrollTop;
-	        }// else : 업 스크롤인 상태
-*/	         
-	});// scroll event
-	 
-		
-		
 	});
 </script>
 <body>
@@ -511,7 +395,7 @@
 		<!-- /.row -->
 	</div>
 	<!-- NEWeat! container -->
-    <section class="no-padding neweatListClass" id="portfolio neweatList">
+    <section class="no-padding neweatList" id="portfolio">
         <div class="container">
             <div class="row popup-gallery">
 				<c:forEach items="${pageDTO.list}" var="s" varStatus="i">
@@ -535,7 +419,7 @@
             </div>
         </div>
     </section>
-  
+  <div id="inputData"></div>
     <br/>
 
  
