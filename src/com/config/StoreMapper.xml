@@ -10,4 +10,20 @@
 	select count(*) from store
 </select>
 
+<select id="selectTop" resultType="StoreDTO">
+	select * 
+	from (select a.*, nvl(a.rating / decode(a.ratingcnt, 0, null, a.ratingcnt), 0) ratingAvg from store a order by ratingAvg desc)
+	<![CDATA[
+	where ROWNUM < 9
+    ]]>
+</select>
+
+<select id="selectNew" resultType="StoreDTO">
+	select *
+	from (select * from store order by "createAt" desc)
+	<![CDATA[
+	where ROWNUM < 9
+    ]]>
+</select>
+
 </mapper>

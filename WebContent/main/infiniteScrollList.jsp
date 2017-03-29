@@ -54,10 +54,10 @@ try{
 					        <img src="${s.imgSrc1}" class="img-responsive" alt="" >
 					        <div class="portfolio-box-caption">
 					            <div class="portfolio-box-caption-content">
-					                <div class="project-category text-faded">
+					                <div class="project-name">
 					                    ${s.sname}
 					                </div>
-					                <div class="project-name">
+					                <div class="project-category text-faded">
 					                    ${s.sid}
 					                    <input type="hidden" id="curPage" name="curPage"  value="${pageDTO.curPage}">
 					                </div>

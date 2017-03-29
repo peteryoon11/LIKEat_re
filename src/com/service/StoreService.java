@@ -15,18 +15,6 @@ public class StoreService {
 	String namespace = "com.acorn.StoreMapper.";
 	
 
-//	public List<StoreDTO> selectAll() {
-//		
-//		List<StoreDTO> list = null;
-//		SqlSession session = MySqlSessionFactory.openMySession();
-//		try{
-//			list = session.selectList(namespace + "selectAll");
-//		} finally {
-//			session.close();
-//		}
-//		return list;
-//	}//selectAll
-
 	public PageDTO selectPage(int curPage) throws LikeatException {
 
 		SqlSession session = MySqlSessionFactory.openMySession();
@@ -56,10 +44,44 @@ public class StoreService {
 	}//selectAll
 	
 	
-	public PageDTO selectTop() {
+	public List<StoreDTO> selectTop() throws LikeatException {
 		
-		return null;
-	}
+		SqlSession session = MySqlSessionFactory.openMySession();
+
+		List<StoreDTO> list = null;
+		
+		try{
+			
+			list = session.selectList(namespace + "selectTop");
+			
+		} catch(Exception e) {	
+			e.printStackTrace();
+			throw new LikeatException("TOP 목록 불러오기 실패!!!!!");
+		} finally {
+			session.close();
+		}
+		return list;
+	}//selectTop
+
+	public List<StoreDTO> selectNew() throws LikeatException {
+		
+		SqlSession session = MySqlSessionFactory.openMySession();
+		
+		List<StoreDTO> list = null;
+		
+		try{
+			
+			list = session.selectList(namespace + "selectNew");
+			
+		} catch(Exception e) {	
+			e.printStackTrace();
+			throw new LikeatException("NEW 목록 불러오기 실패!!!!!");
+		} finally {
+			session.close();
+		}
+		return list;
+	}//selectTop
+
 	
 	
 	public int totRecord() throws LikeatException {
@@ -75,6 +97,11 @@ public class StoreService {
 		}
 		return cnt;
 	}//totRecord
+
+
+
+
+
 
 
 

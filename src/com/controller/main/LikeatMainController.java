@@ -1,6 +1,7 @@
 package com.controller.main;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.entity.PageDTO;
+import com.entity.StoreDTO;
 import com.exception.LikeatException;
 import com.service.StoreService;
 
@@ -29,8 +31,14 @@ public class LikeatMainController extends HttpServlet {
 		
 		try {
 			PageDTO pageDTO = service.selectPage(curPage);
-			PageDTO topDTO = service.selectTop();
+			
+			List<StoreDTO> topList = service.selectTop();
+			List<StoreDTO> newList = service.selectNew();
+			
+			
 			request.setAttribute("pageDTO", pageDTO);
+			request.setAttribute("topList", topList);
+			request.setAttribute("newList", newList);
 			target = "main.jsp";
 		} catch (LikeatException e) {
 			e.printStackTrace();

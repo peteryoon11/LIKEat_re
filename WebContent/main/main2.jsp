@@ -109,43 +109,6 @@
   max-width: none;
   height: 50%; 
 }
-
-
-/* carousel */
-body{padding-top:20px;}
-.carousel {
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-/* The controlsy */
-.carousel-control {
-	left: -12px;
-    height: 40px;
-	width: 40px;
-    background: none repeat scroll 0 0 #222222;
-    border: 4px solid #FFFFFF;
-    border-radius: 23px 23px 23px 23px;
-    margin-top: 90px;
-}
-.carousel-control.right {
-	right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-	right: 50%;
-	top: auto;
-	bottom: -10px;
-	margin-right: -19px;
-}
-/* The colour of the indicators */
-.carousel-indicators li {
-	background: #cecece;
-}
-.carousel-indicators .active {
-background: #428bca;
-}
-/* end carousel */
-
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -214,11 +177,17 @@ background: #428bca;
 	        */
 		});// scroll event
 		
-/* 
-		$('#Carousel').carousel({
-			  interval: 2000
-		})
-*/		 
+		
+		
+		
+	    $(document).ready(function() {
+	        $('#myCarousel').carousel({
+	    	    interval: 10000
+	    	})
+	    });
+		
+		
+		
 	 
 	});
 </script>
@@ -234,94 +203,45 @@ background: #428bca;
 		</div>
 		<!-- /.row -->
 		<!-- Projects Row -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-		            <div id="Carousel" class="carousel slide">
-			            <ol class="carousel-indicators">
-			                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-			                <li data-target="#Carousel" data-slide-to="1"></li>
-			            </ol>
-		          	  <!-- Carousel items -->
-			            <div class="carousel-inner">
-							<div class="item active">
-								<div class="popup-gallery">
-									<c:forEach items="${topList}" var="topDTO" begin="0" end="3" varStatus="i">
-								  	<div class="col-md-3">
-								  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
-											<div class="thumbnail-wrap">
-												<div class="thumbnail">
-													<div class="centered">
-														<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-													</div>
-												</div>
-											</div>
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">
-													${topDTO.sname}
-												</div>
-												<div class="project-category text-faded">
-													<c:choose>
-														<c:when test="${0 eq topDTO.ratingCnt}">
-															"아직 별점이 없습니다"							
-														</c:when>
-														<c:otherwise>
-							 								${topDTO.rating / topDTO.ratingCnt}
-														</c:otherwise>
-													</c:choose>
-													${topDTO.sid}
-						          	 			</div>
-							           		</div>
-						       			</div>
-										</a>
-									</div>
-								</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-			              
-			            	<div class="item">
-								<div class="popup-gallery">
-									<c:forEach items="${topList}" var="topDTO" begin="4" end="7" varStatus="i">
-									  	<div class="col-md-3">
-									  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
-												<div class="thumbnail-wrap">
-													<div class="thumbnail">
-														<div class="centered">
-															<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-														</div>
-													</div>
-												</div>
-												<div class="portfolio-box-caption">
-													<div class="portfolio-box-caption-content">
-														<div class="project-name">
-															${topDTO.sname}
-														</div>
-														<div class="project-category text-faded">
-															<c:choose>
-																<c:when test="${0 eq topDTO.ratingCnt}">
-																	"아직 별점이 없습니다"							
-																</c:when>
-																<c:otherwise>
-								 									${topDTO.rating / topDTO.ratingCnt}
-																</c:otherwise>
-															</c:choose>
-															${topDTO.sid}
-							          	 				</div>
-								           			</div>
-							       				</div>
-											</a>
-										</div>
-									</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-            			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-           	 		</div><!--.Carousel-->
-				</div> <!-- end : col-md-12 -->
-			</div> <!-- end : row popup-gallery -->
-		</div> <!-- end : content container -->
+		
+
+<section class="no-padding" id="portfolio">
+	<div class="container">
+    <!-- <div class="row no-gutter popup-gallery"> -->
+	<div class="row popup-gallery">
+		<c:forEach items="${topList}" var="topDTO">
+			<div class="col-lg-3 col-sm-6">
+				<a href="${topDTO.imgSrc1}" class="portfolio-box">
+					<div class="thumbnail-wrap">
+						<div class="thumbnail">
+							<div class="centered">
+								<img src="${topDTO.imgSrc1}" class="landscape">
+							</div>
+						</div>
+					</div>
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-name">
+								${topDTO.sname}
+							</div>
+							<div class="project-category text-faded">
+	 							<c:choose>
+	 								<c:when test="${0 eq topDTO.ratingCnt}">
+	 									"아직 별점이 없습니다"							
+	 								</c:when>
+	 								<c:otherwise>
+			 							${topDTO.rating / topDTO.ratingCnt}
+	 								</c:otherwise>
+	 							</c:choose>
+	           	 			</div>
+	            		</div>
+	        		</div>
+				</a>
+			</div> 
+		</c:forEach>
+	</div>
+</section>
+
 	</div>
 	<!-- TOPeat! container -->
 
@@ -329,6 +249,7 @@ background: #428bca;
 
 	<!-- NEWeat! container -->
 	<div class="container">
+
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
@@ -337,96 +258,87 @@ background: #428bca;
 		</div>
 		<!-- /.row -->
 		<!-- Projects Row -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-		            <div id="Carousel" class="carousel slide">
-			            <ol class="carousel-indicators">
-			                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-			                <li data-target="#Carousel" data-slide-to="1"></li>
-			            </ol>
-		          	  <!-- Carousel items -->
-			            <div class="carousel-inner">
-							<div class="item active">
-								<div class="popup-gallery">
-									<c:forEach items="${newList}" var="newDTO" begin="0" end="3" varStatus="i">
-								  	<div class="col-md-3">
-								  		<a href="${newDTO.imgSrc1}" class="portfolio-box">
-											<div class="thumbnail-wrap">
-												<div class="thumbnail">
-													<div class="centered">
-														<img src="${newDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-													</div>
-												</div>
-											</div>
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">
-													${newDTO.sname}
-												</div>
-												<div class="project-category text-faded">
-													<c:choose>
-														<c:when test="${0 eq newDTO.ratingCnt}">
-															"아직 별점이 없습니다"							
-														</c:when>
-														<c:otherwise>
-							 								${newDTO.rating / newDTO.ratingCnt}
-														</c:otherwise>
-													</c:choose>
-													${newDTO.sid}
-						          	 			</div>
-							           		</div>
-						       			</div>
-										</a>
-									</div>
-								</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-			              
-			            	<div class="item">
-								<div class="popup-gallery">
-									<c:forEach items="${topList}" var="topDTO" begin="4" end="7" varStatus="i">
-									  	<div class="col-md-3">
-									  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
-												<div class="thumbnail-wrap">
-													<div class="thumbnail">
-														<div class="centered">
-															<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-														</div>
-													</div>
-												</div>
-												<div class="portfolio-box-caption">
-													<div class="portfolio-box-caption-content">
-														<div class="project-name">
-															${topDTO.sname}
-														</div>
-														<div class="project-category text-faded">
-															<c:choose>
-																<c:when test="${0 eq topDTO.ratingCnt}">
-																	"아직 별점이 없습니다"							
-																</c:when>
-																<c:otherwise>
-								 									${topDTO.rating / topDTO.ratingCnt}
-																</c:otherwise>
-															</c:choose>
-															${topDTO.sid}
-							          	 				</div>
-								           			</div>
-							       				</div>
-											</a>
-										</div>
-									</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-            			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
-           	 		</div><!--.Carousel-->
-				</div> <!-- end : col-md-12 -->
-			</div> <!-- end : row popup-gallery -->
-		</div> <!-- end : content container -->
+
+    <section class="no-padding" id="portfolio">
+        <div class="container">
+            <!-- <div class="row no-gutter popup-gallery"> -->
+            <div class="row popup-gallery">
+
+		<div class="col-lg-3 col-sm-6">
+			<a href="${storeList[1].imgSrc2}" class="portfolio-box">
+				<div class="thumbnail-wrapw">
+					<div class="thumbnailw">
+						<div class="centeredw">
+							<img src="${storeList[1].imgSrc2}" class="landscapew">
+						</div>
+					</div>
+				</div>
+				<div class="portfolio-box-caption">
+					<div class="portfolio-box-caption-content">
+						<div class="project-category text-faded">
+							${storeList[1].sname}
+						</div>
+						<div class="project-name">
+ 							${storeList[1].sname}
+           	 			</div>
+            		</div>
+        		</div>
+			</a>
+		</div>         
+
+        <div class="col-lg-3 col-sm-6">
+            <a href="${storeList[1].imgSrc1}" class="portfolio-box">
+                <img src="${storeList[1].imgSrc1}" class="img-responsive likeatList" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            ${storeList[1].sname}
+                        </div>
+                        <div class="project-name">
+                            ${storeList[1].sname}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-sm-6">
+            <a href="${storeList[1].imgSrc1}" class="portfolio-box">
+                <img src="${storeList[1].imgSrc1}" class="img-responsive" alt="">
+                <div class="portfolio-box-caption">
+                    <div class="portfolio-box-caption-content">
+                        <div class="project-category text-faded">
+                            ${storeList[1].sname}
+                        </div>
+                        <div class="project-name">
+                            ${storeList[1].sname}
+                        </div>
+                    </div>
+                </div>
+            </a>
+        </div>
+         <div class="col-lg-3 col-sm-6">
+             <a href="${storeList[1].imgSrc1}" class="portfolio-box">
+                 <img src="${storeList[1].imgSrc1}" class="img-responsive" alt="">
+                 <div class="portfolio-box-caption">
+                     <div class="portfolio-box-caption-content">
+                         <div class="project-category text-faded">
+                             ${storeList[1].sname}
+                         </div>
+                         <div class="project-name">
+                             ${storeList[1].sname}
+                         </div>
+                     </div>
+                 </div>
+             </a>
+         </div>
+         </div>
+        </div>
+    </section>
+
 	</div>
 	<!-- NEWeat! container -->
+
+
 
 
 	<div class="container">
@@ -467,7 +379,6 @@ background: #428bca;
     </section>
   <div id="inputData"></div>
     <br/>
-
 
  
 	<!-- Footer -->
