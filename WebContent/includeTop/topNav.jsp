@@ -43,15 +43,8 @@
 </style>
 <body>
 
-
-
-
-
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container-fluid">
-  
-  
-  
   
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header col-lg-1">
@@ -68,7 +61,7 @@
     <div class="collapse navbar-collapse col-lg-4" id="bs-example-navbar-collapse-1">
     	<form class="navbar-form navbar-left">
 	        <div class="form-group">
-	        	<input type="text" class="form-control" placeholder="Search">
+	        	<input type="text" class="form-control" placeholder="Search"> <!--검색창 부분 -->
 	        </div>
       	</form>
  	</div>
@@ -103,7 +96,7 @@
       	
       	
       	
-		<ul class="nav navbar-nav navbar-right">
+	<ul class="nav navbar-nav navbar-right">
 			<li><a href="JoinFormController"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
 			<li><a href="LoginFormController"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 		</ul>

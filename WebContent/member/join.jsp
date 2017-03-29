@@ -59,6 +59,7 @@ $(document).ready(function() {
 	});
 
 	$("#userid").on("focus", function() {
+		console.log("111");
 		$(".userpwCheck").text("");
 		if($("#userid").val().trim().length == 0) {
 			$("#userid").val("");
