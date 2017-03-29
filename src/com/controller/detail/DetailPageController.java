@@ -71,9 +71,19 @@ public class DetailPageController extends HttpServlet {
 	//	System.out.println("1");
 		String target="detail.jsp";
 		RequestDispatcher dis = request.getRequestDispatcher("detail.jsp");
+//		String target="detail.jsp";
+		//RequestDispatcher dis = request.getRequestDispatcher("TestSource/Detailtest/Detail.jsp");
+		response.sendRedirect(target);
+	/*	
+		RequestDispatcher dis = request.getRequestDispatcher(target);
+		
+>>>>>>> branch 'detail' of https://github.com/peteryoon11/LIKEat_re.git
 		dis.forward(request, response);
+<<<<<<< HEAD
 	
-	}
+=======
+	*/
+}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
