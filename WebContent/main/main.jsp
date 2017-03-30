@@ -21,6 +21,7 @@
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
  <![endif]-->
 <style type="text/css">
+
 .thumbnail-wrap {
   width: 100%;
 }
@@ -251,7 +252,7 @@ background: #428bca;
 								  	<div class="col-md-3">
 								  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
 											<div class="thumbnail-wrap">
-												<div class="thumbnail">
+												<div class="thumbnail" style="overflow: hidden">
 													<div class="centered">
 														<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
 													</div>

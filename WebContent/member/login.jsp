@@ -63,7 +63,6 @@ $(document).ready(function() {
 	});//focus
 	
 	
-	
 });//ready
 </script>
 

@@ -1,4 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
@@ -29,6 +30,23 @@
 	margin-top: 0;
 }
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$("#searchForm").on("submit", function(e) {
+			var result = false;
+			if($("#searchKeyword").val() == null || $("#searchKeyword").val().trim().length == 0) {
+			} else {
+				result = true;
+			}
+			return result;
+		});
+		
+		
+	});
+</script>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
@@ -46,9 +64,9 @@
 
 	    <!-- Collect the nav links, forms, and other content for toggling -->
 	    <div class="collapse navbar-collapse col-lg-4" id="bs-example-navbar-collapse-1">
-	    	<form class="navbar-form navbar-left">
+	    	<form class="navbar-form navbar-left" id="searchForm"  name="searchForm" action="SearchController" method="get">
 		        <div class="form-group">
-		        	<input type="text" class="form-control" placeholder="Search">
+		        	<input id="searchKeyword" name="searchKeyword" type="text" class="form-control" placeholder="상호명 또는 대표 메뉴로 검색해보세요 :-)" size="50">
 		        </div>
 	      	</form>
 	 	</div>
@@ -89,7 +107,6 @@
 							LOGIN
 						</a>
 					</li>
-
 				</c:when>
 				<c:otherwise>
 					<li>

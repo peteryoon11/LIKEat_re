@@ -29,6 +29,7 @@ public class LikeatMainController extends HttpServlet {
 
 		StoreService service = new StoreService();
 		
+		
 		try {
 			PageDTO pageDTO = service.selectPage(curPage);
 			
