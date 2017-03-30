@@ -214,11 +214,11 @@ background: #428bca;
 	        */
 		});// scroll event
 		
-/* 
+ 
 		$('#Carousel').carousel({
 			  interval: 2000
 		})
-*/		 
+		 
 	 
 	});
 </script>
@@ -237,10 +237,10 @@ background: #428bca;
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-		            <div id="Carousel" class="carousel slide">
+		            <div id="CarouselTop" class="carousel slide">
 			            <ol class="carousel-indicators">
-			                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-			                <li data-target="#Carousel" data-slide-to="1"></li>
+			                <li data-target="#CarouselTop" data-slide-to="0" class="active"></li>
+			                <li data-target="#CarouselTop" data-slide-to="1"></li>
 			            </ol>
 		          	  <!-- Carousel items -->
 			            <div class="carousel-inner">
@@ -316,8 +316,8 @@ background: #428bca;
 								</div><!--.popup-gallery-->
 							</div><!--.item-->
             			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+		            	<a data-slide="prev" href="#CarouselTop" class="left carousel-control">‹</a>
+						<a data-slide="next" href="#CarouselTop" class="right carousel-control">›</a>
            	 		</div><!--.Carousel-->
 				</div> <!-- end : col-md-12 -->
 			</div> <!-- end : row popup-gallery -->
@@ -340,10 +340,10 @@ background: #428bca;
 		<div class="container">
 			<div class="row">
 				<div class="col-md-12">
-		            <div id="Carousel" class="carousel slide">
+		            <div id="CarouselNew" class="carousel slide">
 			            <ol class="carousel-indicators">
-			                <li data-target="#Carousel" data-slide-to="0" class="active"></li>
-			                <li data-target="#Carousel" data-slide-to="1"></li>
+			                <li data-target="#CarouselNew" data-slide-to="0" class="active"></li>
+			                <li data-target="#CarouselNew" data-slide-to="1"></li>
 			            </ol>
 		          	  <!-- Carousel items -->
 			            <div class="carousel-inner">
@@ -419,8 +419,8 @@ background: #428bca;
 								</div><!--.popup-gallery-->
 							</div><!--.item-->
             			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#Carousel" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#Carousel" class="right carousel-control">›</a>
+		            	<a data-slide="prev" href="#CarouselNew" class="left carousel-control">‹</a>
+						<a data-slide="next" href="#CarouselNew" class="right carousel-control">›</a>
            	 		</div><!--.Carousel-->
 				</div> <!-- end : col-md-12 -->
 			</div> <!-- end : row popup-gallery -->
