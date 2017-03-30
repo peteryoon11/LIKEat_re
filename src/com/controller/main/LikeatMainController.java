@@ -35,7 +35,6 @@ public class LikeatMainController extends HttpServlet {
 			List<StoreDTO> topList = service.selectTop();
 			List<StoreDTO> newList = service.selectNew();
 			
-			
 			request.setAttribute("pageDTO", pageDTO);
 			request.setAttribute("topList", topList);
 			request.setAttribute("newList", newList);

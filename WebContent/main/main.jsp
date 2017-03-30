@@ -151,6 +151,7 @@ background: #428bca;
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
 	    var curPage = 2;
 
 	    var lastScrollTop = 0;

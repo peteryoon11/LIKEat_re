@@ -6,6 +6,10 @@
 	select count(*) from member where userid = #{userid}
 </select>
 
+<select id="login" parameterType="hashmap" resultType="MemberDTO">
+	select * from member where userid = #{userid} and userpw = #{userpw}
+</select>
+
 <insert id="join" parameterType="MemberDTO">
 	insert into member values (#{username}, #{userid}, #{userpw}, #{email}, #{phone1}, #{phone2}, #{phone3})
 </insert>

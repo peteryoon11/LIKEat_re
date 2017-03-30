@@ -40,19 +40,30 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 $(document).ready(function() {
-	$("#joinForm").on("submit", function(event) {
+	$("#loginForm").on("submit", function(event) {
 //		event.preventDefault();
 		var result = false;
 
 		if($("#userid").val().trim().length == 0) {
 			$(".userid").text("아이디를 입력해주세요");
 		} else if($("#userpw").val().trim().length == 0) {
-			$(".userpwCheck").text("비밀번호를 입력해주세요");
+			$(".userpw").text("비밀번호를 입력해주세요");
 		} else {
 			result = true;
 		}
 		return result;
 	});
+	
+	
+	$("#userid").on("focus", function() {
+		$(".userid").text("");		
+	});//focus
+	$("#userpw").on("focus", function() {
+		$(".userpw").text("");		
+	});//focus
+	
+	
+	
 });//ready
 </script>
 
@@ -67,7 +78,7 @@ $(document).ready(function() {
                	</div>
             </div> 
 			<div class="main-login main-center">
-				<form id="joinForm" class="form-horizontal" method="post" action="JoinController">
+				<form id="loginForm" class="form-horizontal" method="post" action="LoginController">
 					
 					<div class="form-group">
 					  <label class="col-md-5 control-label" for="Name">아이디</label>  
@@ -82,7 +93,7 @@ $(document).ready(function() {
 					  <div class="col-md-2">
 					    <input id="userpw" name="userpw" type="password" class="form-control input-md">
 					  </div>
-					  <span class="formValidation"></span>
+					  <span class="formValidation userpw"></span>
 					</div>
 					
 					<!-- Button -->

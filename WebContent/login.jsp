@@ -11,5 +11,10 @@
 <body>
 	<jsp:include page="includeTop/topNav.jsp" />
 	<jsp:include page="member/login.jsp" />
+	<c:if test="${loginFail != null}">
+	<script type="text/javascript">
+		alert('${loginFail}');
+	</script>
+</c:if>
 </body>
 </html>
