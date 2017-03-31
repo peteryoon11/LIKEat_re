@@ -224,7 +224,7 @@ background: #428bca;
 	 
 	});
 </script>
-<body>
+<body id="mainPage">
 	<!-- TOPeat! -->
 	<div class="container">
 
@@ -250,7 +250,7 @@ background: #428bca;
 								<div class="popup-gallery">
 									<c:forEach items="${topList}" var="topDTO" begin="0" end="3" varStatus="i">
 								  	<div class="col-md-3">
-								  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
+								  		<a href="http://www.naver.com" class="portfolio-box">
 											<div class="thumbnail-wrap">
 												<div class="thumbnail" style="overflow: hidden">
 													<div class="centered">
@@ -471,18 +471,20 @@ background: #428bca;
     <br/>
 
 
- 
-	<!-- Footer -->
-	<footer>
-		<div class="row">
-			<div class="col-lg-12">
-				<p>Copyright &copy; LIKEat Project 2017</p>
-			</div>
-		</div>
-		<!-- /.row -->
+<!-- Footer -->
+	<footer class="container-fluid text-center">
+		<a href="#mainPage" title="맨 위로">
+			<span class="glyphicon glyphicon-chevron-up" style="color: orange;"></span>
+		</a>
+		<br/><br/>
+		<p>Copyright &copy; LIKEat Project 2017</p>
+<!-- <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p> -->
 	</footer>
 
-
+ 
+ 
+ 
+ 
 <!-- jQuery -->
 <!-- 
 

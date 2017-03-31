@@ -44,7 +44,7 @@ public class LikeatMainController extends HttpServlet {
 			e.printStackTrace();
 			target = "error.jsp";
 			request.setAttribute("errorMsg", "목록 불러오기에 실패했어요 :-( ");
-			request.setAttribute("linkMsg", "메인 다시 불러오기!");
+			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
 			request.setAttribute("link", "LikeatMainController");
 		}
 		

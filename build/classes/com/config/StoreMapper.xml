@@ -26,10 +26,9 @@
     ]]>
 </select>
 
-<select id="searchKeyword" resultType="StoreDTO">
-	select a.*, nvl(a.rating / decode(a.ratingcnt, 0, null, a.ratingcnt), 0) ratingAvg 
-	from store a 
-	order by ratingAvg desc
+<select id="searchKeyword" parameterType="String" resultType="StoreDTO">
+select * from store
+where (sname like '%'||#{searchKeyword}||'%' or menu like '%'||#{searchKeyword}||'%')
 </select>
 
 </mapper>
