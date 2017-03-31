@@ -116,6 +116,22 @@ public class StoreService {
 	}//totRecord
 
 
+	public int searchCnt(String searchKeyword) throws LikeatException {
+		int cnt = 0;
+		SqlSession session = MySqlSessionFactory.openMySession();
+		try{
+			cnt = session.selectOne(namespace + "searchCnt", searchKeyword);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new LikeatException("찾기목록 토탈 레코드 가져오기 실패!!!!!!!");
+		}finally {
+			session.close();
+		}
+		return cnt;
+	}
+
+
+
 
 
 

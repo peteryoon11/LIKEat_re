@@ -29,13 +29,17 @@ public class SearchController extends HttpServlet {
 //		그리고 order by 기능을 추가하여, [상호명 가나다순] [최신등록순] 으로 정렬해서 볼 수 있게 할 예정입니다
 		
 		try {
+			
 			List<StoreDTO> list = service.searchKeyword(searchKeyword);
 			// 값 넘겨받고나서, 1건도 없을수도 있고 1건만 있을수도 있고... 케이스따라!
+			
+			int resultCnt = service.searchCnt(searchKeyword);
 			
 			if(list == null) {
 				System.out.println("검색결과 없음 =========> null");
 			} else {
 				request.setAttribute("searchList", list);
+				request.setAttribute("resultCnt", resultCnt);
 				System.out.println("검색결과 not null =========> " + list);
 			}
 			target = "search.jsp";

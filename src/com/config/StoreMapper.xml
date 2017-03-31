@@ -27,8 +27,13 @@
 </select>
 
 <select id="searchKeyword" parameterType="String" resultType="StoreDTO">
-select * from store
-where (sname like '%'||#{searchKeyword}||'%' or menu like '%'||#{searchKeyword}||'%')
+	select * from store
+	where (sname like '%'||#{searchKeyword}||'%' or menu like '%'||#{searchKeyword}||'%')
+</select>
+
+<select id="searchCnt" parameterType="String" resultType="int">
+	select count(*) from store
+	where (sname like '%'||#{searchKeyword}||'%' or menu like '%'||#{searchKeyword}||'%')
 </select>
 
 </mapper>

@@ -226,7 +226,7 @@ background: #428bca;
 </script>
 <body id="mainPage">
 	<!-- TOPeat! -->
-	<div class="container">
+	<div class="container" style="padding-top: 50px">
 
 		<!-- Page Heading -->
 		<div class="row">

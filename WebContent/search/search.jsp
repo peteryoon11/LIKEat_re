@@ -31,45 +31,90 @@
 	 
 	});
 </script>
-<body>
-<c:choose>
-	<c:when test="${searchList eq null}">
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-		검색결과가 없습니다 ㅠ
-	</c:when>
-
-	<c:otherwise>
-		<c:forEach items="${searchList}" var="storeDTO">
-		${storeDTO.sname }
-		</c:forEach>	
-	</c:otherwise>
-</c:choose>
-
-
-
-
-
-
- 
-	<!-- Footer -->
-	<footer>
-		<div class="row">
-			<div class="col-lg-12">
-				<p>Copyright &copy; LIKEat Project 2017</p>
+<body id="mainPage">
+	<c:choose>
+		<c:when test="${searchList eq '[]'}">
+			<div class="panel-heading">
+				<div class="panel-title text-center">
+					<h2>검색결과가 없습니다 :-(</h2>
+               	</div>
+            </div> 
+          	<nav class="navbar navbar-default navbar-fixed-bottom">
+				<div class="container" align="center">
+					<p>Copyright &copy; LIKEat Project 2017</p>
+				</div>
+			</nav>
+		</c:when>
+		<c:otherwise>
+		    <!-- Page Content -->
+		    <div class="container">
+		
+		        <!-- Page Heading -->
+		        <div class="row">
+		            <div class="col-lg-12">
+		                <h1 class="page-header">검색한 결과
+		                    <small>총 ${resultCnt} 건</small>
+		                </h1>
+		            </div>
+		        </div>
+		        <!-- /.row -->
+				
+				<c:forEach items="${searchList}" var="storeDTO">
+			        <!-- Project One -->
+			        <div class="row">
+			            <div class="col-md-4">
+			                <a href="#">
+			                    <img class="img-responsive" src="${storeDTO.imgSrc1 }" alt="">
+			                </a>
+			            </div>
+			            <div class="col-md-8">
+			                <h3>${storeDTO.sname }</h3>
+			                <h4>Subheading</h4>
+			                <p>
+								${storeDTO.menu }			                
+			                </p>
+			                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+			            </div>
+			        </div>
+			        <!-- /.row -->
+			
+			        <br/><br/><br/>
+			
+				</c:forEach>	
 			</div>
-		</div>
-		<!-- /.row -->
-	</footer>
+			<!-- Pagination -->
+			<div class="row text-center">
+			    <div class="col-lg-12">
+			        <ul class="pagination">
+			            <li>
+			                <a href="#">&laquo;</a>
+			            </li>
+			            <li class="active">
+			                <a href="#">1</a>
+			            </li>
+			            <li>
+			                <a href="#">2</a>
+			            </li>
+			            <li>
+			                <a href="#">&raquo;</a>
+			            </li>
+			        </ul>
+			    </div>
+			</div>
+			 <!-- /.row -->
+		<!-- Footer -->
+			<footer class="container-fluid text-center">
+				<a href="#mainPage" title="맨 위로">
+					<span class="glyphicon glyphicon-chevron-up" style="color: orange;"></span>
+				</a>
+				<br/><br/>
+				<p>Copyright &copy; LIKEat Project 2017</p>
+			</footer>
+		</c:otherwise>
+	</c:choose>
+	
 <!-- jQuery -->
 <!-- 
-
  	<script src="startbootstrap-4-col-portfolio-gh-pages/js/jquery.js"></script>
 	Bootstrap Core JavaScript
 	<script src="startbootstrap-4-col-portfolio-gh-pages/js/bootstrap.min.js"></script>
