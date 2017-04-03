@@ -20,7 +20,10 @@
      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
  <![endif]-->
 <style type="text/css">
-
+.btn-search-detail {
+	border: none;
+	background-color: orange;
+}
 
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -69,20 +72,20 @@
 			            </div>
 			            <div class="col-md-8">
 			                <h3>${storeDTO.sname }</h3>
-			                <h4>
+			                <h7>
 			               		<c:choose>
 									<c:when test="${0 eq storeDTO.ratingCnt}">
-										"아직 별점이 없습니다"							
+										아직 별점이 없습니다 ☞☜							
 									</c:when>
 									<c:otherwise>
 							 			${storeDTO.rating / storeDTO.ratingCnt}
 									</c:otherwise>
 								</c:choose>
-			                </h4>
+			                </h7>
 			                <p>
 								${storeDTO.menu }			                
 			                </p>
-			                <a class="btn btn-primary" href="#">View Project <span class="glyphicon glyphicon-chevron-right"></span></a>
+			                <a class="btn btn-primary btn-search-detail" href="#">자세히 보러가기<span class="glyphicon glyphicon-chevron-right"></span></a>
 			            </div>
 			        </div>
 			        <!-- /.row -->
@@ -92,7 +95,7 @@
 				</c:forEach>	
 			</div>
 			<!-- Pagination -->
-			<div class="row text-center">
+<!-- 			<div class="row text-center">
 			    <div class="col-lg-12">
 			        <ul class="pagination">
 			            <li>
@@ -109,7 +112,7 @@
 			            </li>
 			        </ul>
 			    </div>
-			</div>
+			</div> -->
 			 <!-- /.row -->
 		<!-- Footer -->
 			<footer class="container-fluid text-center">

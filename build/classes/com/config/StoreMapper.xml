@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.acorn.StoreMapper">
 
-<select id="selectPage" resultType="StoreDTO">
+<select id="selectPage" parameterType="hashmap" resultType="StoreDTO">
 	select * from store order by sid desc
 </select>
 
@@ -18,7 +18,7 @@
     ]]>
 </select>
 
-<select id="selectNew" resultType="StoreDTO">
+<select id="selectNew" parameterType="" resultType="StoreDTO">
 	select *
 	from (select * from store order by "createAt" desc)
 	<![CDATA[

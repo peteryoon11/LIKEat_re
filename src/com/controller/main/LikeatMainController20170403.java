@@ -1,7 +1,6 @@
 package com.controller.main;
 
 import java.io.IOException;
-import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -16,17 +15,16 @@ import com.entity.StoreDTO;
 import com.exception.LikeatException;
 import com.service.StoreService;
 
-@WebServlet("/LikeatMainController")
-public class LikeatMainController extends HttpServlet {
+@WebServlet("/LikeatMainController20170403")
+public class LikeatMainController20170403 extends HttpServlet {
+/*	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String curPage = request.getParameter("curPage");
-		if(curPage == null) {
-			curPage = "1";
+		String curPageS = request.getParameter("curPage");
+		int curPage = 1;
+		if(curPageS != null) {
+			curPage = Integer.parseInt(curPageS);
 		}		
-		
-		HashMap<String, String> mapperParam = new HashMap<>();
-		mapperParam.put("curPage", curPage);
 		
 		String target = "";
 
@@ -34,7 +32,7 @@ public class LikeatMainController extends HttpServlet {
 		
 		
 		try {
-			PageDTO pageDTO = service.selectPage(mapperParam);
+			PageDTO pageDTO = service.selectPage(curPage);
 			
 			List<StoreDTO> topList = service.selectTop();
 			List<StoreDTO> newList = service.selectNew();
@@ -63,5 +61,5 @@ public class LikeatMainController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
-
+*/
 }

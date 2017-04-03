@@ -1,5 +1,6 @@
 package com.service;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
@@ -15,7 +16,7 @@ public class StoreService {
 	String namespace = "com.acorn.StoreMapper.";
 	
 
-	public PageDTO selectPage(int curPage) throws LikeatException {
+	public PageDTO selectPage(HashMap<String, String> mapperParam) throws LikeatException {
 
 		SqlSession session = MySqlSessionFactory.openMySession();
 
@@ -23,11 +24,13 @@ public class StoreService {
 		
 		PageDTO pageDTO = new PageDTO();
 		
+		int curPage = Integer.parseInt(mapperParam.get("curPage"));
+		
 		int skip = (curPage - 1) * pageDTO.getPerPage();
 		
 		try{
 			
-			list = session.selectList(namespace + "selectPage", null, new RowBounds(skip, pageDTO.getPerPage()));
+			list = session.selectList(namespace + "selectPage", mapperParam, new RowBounds(skip, pageDTO.getPerPage()));
 			
 			pageDTO.setList(list);
 			pageDTO.setCurPage(curPage);

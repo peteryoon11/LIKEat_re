@@ -44,6 +44,10 @@
 			return result;
 		});
 		
+		$(".notyetRegion").on("click", function() {
+			alert('아직 준비중입니다 :-)');
+		});
+		
 		
 	});
 </script>
@@ -77,10 +81,11 @@
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#">menu<span class="caret"></span></a>
 		        <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider dropdownMenu3">
 		        	<li class="dropdown-header">지역별</li>
-					<li><a href="#">강동</a></li>
-					<li><a href="#">강서</a></li>
-					<li><a href="#">강남</a></li>
-					<li><a href="#">강북</a></li>
+					<li><a href="RegionGangnamController">강남구</a></li>
+					<li><a href="RegionSongpaController">송파구</a></li>
+					<li><a href="#" class="notyetRegion">용산구</a></li>
+					<li><a href="#" class="notyetRegion">강북구</a></li>
+					<li><a href="#" class="notyetRegion">강서구</a></li>
 					<li role="separator" class="divider"></li>
 		        	<li class="dropdown-header">종류별</li>
 					<li><a href="#">한식</a></li>

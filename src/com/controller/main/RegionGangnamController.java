@@ -16,8 +16,8 @@ import com.entity.StoreDTO;
 import com.exception.LikeatException;
 import com.service.StoreService;
 
-@WebServlet("/LikeatMainController")
-public class LikeatMainController extends HttpServlet {
+@WebServlet("/RegionGangnamController")
+public class RegionGangnamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		String curPage = request.getParameter("curPage");
@@ -32,7 +32,6 @@ public class LikeatMainController extends HttpServlet {
 
 		StoreService service = new StoreService();
 		
-		
 		try {
 			PageDTO pageDTO = service.selectPage(mapperParam);
 			
@@ -42,18 +41,14 @@ public class LikeatMainController extends HttpServlet {
 			request.setAttribute("pageDTO", pageDTO);
 			request.setAttribute("topList", topList);
 			request.setAttribute("newList", newList);
-			target = "main.jsp";
+			target = "regionGangnam.jsp";
 		} catch (LikeatException e) {
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("errorMsg", "목록 불러오기에 실패했어요 :-( ");
+			request.setAttribute("errorMsg", "강남구 목록 불러오기에 실패했어요 :-( ");
 			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
 			request.setAttribute("link", "LikeatMainController");
 		}
-		
-//		List<StoreDTO> list = service.selectAll();
-//		request.setAttribute("storeList", list);
-		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(target);
 		dispatcher.forward(request, response);
@@ -65,3 +60,4 @@ public class LikeatMainController extends HttpServlet {
 	}
 
 }
+
