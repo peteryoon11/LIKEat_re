@@ -18,7 +18,7 @@
     ]]>
 </select>
 
-<select id="selectNew" parameterType="" resultType="StoreDTO">
+<select id="selectNew" resultType="StoreDTO">
 	select *
 	from (select * from store order by "createAt" desc)
 	<![CDATA[

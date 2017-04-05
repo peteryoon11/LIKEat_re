@@ -19,7 +19,7 @@ import com.service.StoreService;
 @WebServlet("/RegionGangnamController")
 public class RegionGangnamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+/*		
 		String curPage = request.getParameter("curPage");
 		if(curPage == null) {
 			curPage = "1";
@@ -51,7 +51,7 @@ public class RegionGangnamController extends HttpServlet {
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-		dispatcher.forward(request, response);
+		dispatcher.forward(request, response);*/
 		
 	}
 

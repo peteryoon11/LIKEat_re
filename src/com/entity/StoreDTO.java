@@ -4,8 +4,8 @@ public class StoreDTO {
 	
 	private String sid;
 	private String sname;
-	private int shour1;
-	private int shour2;
+	private String shour1;
+	private String shour2;
 	private String post1;
 	private String post2;
 	private String addr1;
@@ -28,7 +28,7 @@ public class StoreDTO {
 	public StoreDTO() {
 	}
 
-	public StoreDTO(String sid, String sname, int shour1, int shour2, String post1, String post2, String addr1,
+	public StoreDTO(String sid, String sname, String shour1, String shour2, String post1, String post2, String addr1,
 			String addr2, String scategory, String sphone1, String sphone2, String sphone3, String menu, int sprice,
 			char parking, int rating, int ratingCnt, String imgSrc1, String imgSrc2, String imgSrc3, String imgSrc4,
 			String createAt) {
@@ -73,19 +73,19 @@ public class StoreDTO {
 		this.sname = sname;
 	}
 
-	public int getShour1() {
+	public String getShour1() {
 		return shour1;
 	}
 
-	public void setShour1(int shour1) {
+	public void setShour1(String shour1) {
 		this.shour1 = shour1;
 	}
 
-	public int getShour2() {
+	public String getShour2() {
 		return shour2;
 	}
 
-	public void setShour2(int shour2) {
+	public void setShour2(String shour2) {
 		this.shour2 = shour2;
 	}
 
@@ -244,5 +244,4 @@ public class StoreDTO {
 	}
 
 	
-
 }
