@@ -5,8 +5,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 <configuration>
 	<properties resource="com/config/jdbc.properties"></properties>
 	<typeAliases>
-		<typeAlias type="com.entity.StoreDTO" alias="StoreDTO"/>
-		<typeAlias type="com.entity.MemberDTO" alias="MemberDTO"/>
+		<typeAlias type="com.entity.StoreDTO" alias="StoreDTO" />
+		<typeAlias type="com.entity.MemberDTO" alias="MemberDTO" />
+		<typeAlias type="com.entity.SreplyDTO" alias="SreplyDTO" />
 	</typeAliases>
 	<environments default="development">
 		<environment id="development">
@@ -22,5 +23,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<mappers>
 		<mapper resource="com/config/StoreMapper.xml" />
 		<mapper resource="com/config/MemberMapper.xml" />
+		<mapper resource="com/config/SreplyMapper.xml" />
 	</mappers>
 </configuration>

@@ -84,6 +84,19 @@ public class StoreService {
 	}//selectTop
 
 
+	public StoreDTO selectOne(String sid) {
+
+	//List<StoreDTO> list = null;
+		StoreDTO dto=null;
+		SqlSession session = MySqlSessionFactory.openMySession();
+		try {
+			dto = session.selectOne(namespace + "selectOne",sid);
+		} finally {
+			session.close();
+		}
+		return dto;
+	}// selectOne
+
 
 	public List<StoreDTO> searchKeyword(String searchKeyword) throws LikeatException {
 		
