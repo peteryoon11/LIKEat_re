@@ -741,3 +741,35 @@ values (
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/197084_1468974618883116.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/56336/71451_1461987005100_185308'
 );
+
+CREATE TABLE "SREPLY" 
+   (	"SID" VARCHAR2(5 BYTE) not null, 
+	"RID" VARCHAR2(7 BYTE) not null, 
+	"RCONTENT" VARCHAR2(2000 BYTE) not null, 
+	"RAPPR" VARCHAR2(2 BYTE) not null, 
+	"RWRDA" VARCHAR2(200 BYTE) DEFAULT SYSDATE 
+   -- more? 
+	
+   );
+
+
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0016','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0015','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0015','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0015','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0015','23','ddddddd','3','17/04/03');
+Insert into LIKEAT.SREPLY (SID,RID,RCONTENT,RAPPR,RWRDA) values ('s0015','23','ddddddd','3','17/04/03');
