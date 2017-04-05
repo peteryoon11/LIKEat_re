@@ -111,7 +111,6 @@
   height: 50%; 
 }
 
-
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -278,11 +277,11 @@
 				</div>
 			</div> <!-- end : col-md-12 -->
 		</div> <!-- end : content container -->
-	</div>
+	<!-- </div> -->
 	<!-- NEWeat! container -->
 
 
-	<div class="container">
+<!-- 	<div class="container"> -->
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-12">
