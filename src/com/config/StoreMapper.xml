@@ -3,7 +3,19 @@
 <mapper namespace="com.acorn.StoreMapper">
 
 <select id="selectPage" parameterType="hashmap" resultType="StoreDTO">
-	select * from store order by sid desc
+	select * from store 
+	<choose>
+    	<when test="gangnam != null">
+			where addr2 like '강남||'%'
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+    	</otherwise>
+  </choose>
+  order by sid desc
 </select>
 
 <select id="totRecord" resultType="int">

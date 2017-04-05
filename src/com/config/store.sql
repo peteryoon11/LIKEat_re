@@ -426,7 +426,7 @@ values (
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'지아니스나폴리' , '1130', '2230', '000', '000', '서울특별시', '강남구 신사동 541-6', '양식', '02', '3416', '0316', '파스타,리조또', '15000', 'n', 10, 3,
+'지아니스나폴리' , '1130', '2230', '000', '000', '서울특별시', '강남구 신사동 541-6', '양식', '02', '3416', '0316', '파스타,리조또', '15000', 'n', 9, 3,
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/242283_1464954273518671.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/12931/442306_1490652427058_78399',
 'https://mp-seoul-image-production-s3.mangoplate.com/12931/442306_1490652427059_78398',
@@ -527,7 +527,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'바베네' , '1130', '2300', '000', '000', '서울특별시', '송파구 송파동 23-3', '양식', '02', '6397', '0997', '이탈리안, 양갈비', '20000', 'y', 10, 2,
+'바베네' , '1130', '2300', '000', '000', '서울특별시', '송파구 송파동 23-3', '양식', '02', '6397', '0997', '이탈리안, 양갈비', '20000', 'y', 10, 4,
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/4852_1465566806135731.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/539129_1489317113229014.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/539129_1489317115202541.jpg',
@@ -563,7 +563,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'몽중헌' , '1130', '2200', '000', '000', '서울특별시', '송파구 방이동 44-5', '분식', '02', '2202', '8004', '딤섬, 만두', '10000', 'y', 25, 5,
+'몽중헌' , '1130', '2200', '000', '000', '서울특별시', '송파구 방이동 44-5', '분식', '02', '2202', '8004', '딤섬, 만두', '10000', 'y', 21, 5,
 'https://mp-seoul-image-production-s3.mangoplate.com/12724/38146_143533218560150284',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/361632_1491216052141318.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/361632_1491216054027654.jpg',
@@ -625,7 +625,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'파티세리도효' , '1030', '2200', '000', '000', '서울특별시', '송파구 송파동 51-11', '양식', '02', '7523', '6265', '카페, 디저트', '10000', 'y', 50, 10,
+'파티세리도효' , '1030', '2200', '000', '000', '서울특별시', '송파구 송파동 51-11', '양식', '02', '7523', '6265', '카페, 디저트', '10000', 'y', 50, 16,
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/553767_1490536138340271.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/282462/457236_1490444085257_21157',
 'https://mp-seoul-image-production-s3.mangoplate.com/282462/457236_1490444085257_21155',
@@ -637,7 +637,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'엘리스리틀이태리' , '1130', '2200', '000', '000', '서울특별시', '송파구 송파동 8', '양식', '02', '422', '1210', '이탈리안, 연어', '10000', 'y', 25, 5,
+'엘리스리틀이태리' , '1130', '2200', '000', '000', '서울특별시', '송파구 송파동 8', '양식', '02', '422', '1210', '이탈리안, 연어', '10000', 'y', 20, 5,
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/277947_1460717124430735.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/502008_1491147641438457.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/502008_1491147644964270.jpg',
@@ -661,7 +661,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'오향가' , '1130', '2200', '000', '000', '서울특별시', '송파구 가락동 73-3', '중식', '02', '401', '6999', '족발, 짬뽕', '20000', 'y', 40, 8,
+'오향가' , '1130', '2200', '000', '000', '서울특별시', '송파구 가락동 73-3', '중식', '02', '401', '6999', '족발, 짬뽕', '20000', 'y', 12, 8,
 'https://mp-seoul-image-production-s3.mangoplate.com/187661/42460_144414749944029449',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/655313_1488225644315816.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/655313_1488225645573620.jpg',
@@ -723,7 +723,7 @@ Insert into store
 (sid,sname,shour1,shour2,post1, post2, addr1, addr2, scategory, sphone1, sphone2, sphone3, menu, sprice, parking, rating, ratingCnt, imgSrc1, imgSrc2, imgSrc3, imgSrc4)
 values (
 (select concat('s', lpad((max(to_number(ltrim(substr(sid, 2),0))) + 1), 4, 0)) from store),
-'타르타르' , '1100', '2200', '000', '000', '서울특별시', '송파구 방이동 168-13', '양식', '02', '1800', '1261', '카페, 디저트', '10000', 'y', 45, 5,
+'타르타르' , '1100', '2200', '000', '000', '서울특별시', '송파구 방이동 168-13', '양식', '02', '1800', '1261', '카페, 디저트', '10000', 'y', 24, 5,
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/594134_1478423568926773.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/added_restaurants/340957_1489485959179389.jpg',
 'https://mp-seoul-image-production-s3.mangoplate.com/267947/622099_1488821889828_34365',

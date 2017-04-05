@@ -269,7 +269,8 @@ background: #428bca;
 															"아직 별점이 없습니다"							
 														</c:when>
 														<c:otherwise>
-							 								${topDTO.rating / topDTO.ratingCnt}
+															<c:set value="${topDTO.rating / topDTO.ratingCnt}" var="rate"/>
+							 								<fmt:formatNumber value="${rate }" pattern=".0"/>
 														</c:otherwise>
 													</c:choose>
 													${topDTO.sid}

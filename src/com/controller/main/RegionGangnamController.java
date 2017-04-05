@@ -19,7 +19,7 @@ import com.service.StoreService;
 @WebServlet("/RegionGangnamController")
 public class RegionGangnamController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-/*		
+		
 		String curPage = request.getParameter("curPage");
 		if(curPage == null) {
 			curPage = "1";
@@ -27,31 +27,34 @@ public class RegionGangnamController extends HttpServlet {
 		
 		HashMap<String, String> mapperParam = new HashMap<>();
 		mapperParam.put("curPage", curPage);
+		mapperParam.put("gangnam", "gangnam");
 		
 		String target = "";
 
 		StoreService service = new StoreService();
 		
+		
 		try {
 			PageDTO pageDTO = service.selectPage(mapperParam);
 			
-			List<StoreDTO> topList = service.selectTop();
-			List<StoreDTO> newList = service.selectNew();
-			
-			request.setAttribute("pageDTO", pageDTO);
-			request.setAttribute("topList", topList);
-			request.setAttribute("newList", newList);
-			target = "regionGangnam.jsp";
+//			List<StoreDTO> topList = service.selectTop();
+//			List<StoreDTO> newList = service.selectNew();
+//			
+//			request.setAttribute("pageDTO", pageDTO);
+//			request.setAttribute("topList", topList);
+//			request.setAttribute("newList", newList);
+//			target = "main.jsp";
 		} catch (LikeatException e) {
-			e.printStackTrace();
-			target = "error.jsp";
-			request.setAttribute("errorMsg", "강남구 목록 불러오기에 실패했어요 :-( ");
-			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
-			request.setAttribute("link", "LikeatMainController");
+//			e.printStackTrace();
+//			target = "error.jsp";
+//			request.setAttribute("errorMsg", "목록 불러오기에 실패했어요 :-( ");
+//			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
+//			request.setAttribute("link", "LikeatMainController");
 		}
 		
+		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(target);
-		dispatcher.forward(request, response);*/
+		dispatcher.forward(request, response);
 		
 	}
 

@@ -27,6 +27,7 @@ public class LikeatMainController extends HttpServlet {
 		
 		HashMap<String, String> mapperParam = new HashMap<>();
 		mapperParam.put("curPage", curPage);
+		mapperParam.put("main", "main");
 		
 		String target = "";
 
@@ -50,9 +51,6 @@ public class LikeatMainController extends HttpServlet {
 			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
 			request.setAttribute("link", "LikeatMainController");
 		}
-		
-//		List<StoreDTO> list = service.selectAll();
-//		request.setAttribute("storeList", list);
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(target);
