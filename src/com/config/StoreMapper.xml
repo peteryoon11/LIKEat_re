@@ -35,5 +35,8 @@
 	select count(*) from store
 	where (sname like '%'||#{searchKeyword}||'%' or menu like '%'||#{searchKeyword}||'%')
 </select>
+<select id="selectOne" resultType="StoreDTO" parameterType="string">
+	select * from store where sid=#{sid}
+</select>
 
 </mapper>

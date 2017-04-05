@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.acorn.SreplyMapper">
+	<select id="selectAll" resultType="SreplyDTO">
+		select * from sreply
+	</select>
+	
+	<select id="selectSID" resultType="SreplyDTO" parameterType="string">
+		select * from sreply where sid=#{sid}
+	</select>
+	
+	<select id="countReview" resultType="int" parameterType="string">
+	select count(*) from sreply where sid=#{sid}
+	</select>
+	
+
+</mapper>

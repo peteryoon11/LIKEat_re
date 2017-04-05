@@ -250,7 +250,7 @@ background: #428bca;
 								<div class="popup-gallery">
 									<c:forEach items="${topList}" var="topDTO" begin="0" end="3" varStatus="i">
 								  	<div class="col-md-3">
-								  		<a href="http://www.naver.com" class="portfolio-box">
+								  		<a href="DetailPageController?sid=${topDTO.sid}" class="portfolio-box">
 											<div class="thumbnail-wrap">
 												<div class="thumbnail" style="overflow: hidden">
 													<div class="centered">
