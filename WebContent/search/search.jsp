@@ -78,7 +78,8 @@
 										아직 별점이 없습니다 ☞☜							
 									</c:when>
 									<c:otherwise>
-							 			${storeDTO.rating / storeDTO.ratingCnt}
+							 			<c:set value="${storeDTO.rating / storeDTO.ratingCnt}" var="rate"/>
+	 									<fmt:formatNumber value="${rate }" pattern=".0"/>
 									</c:otherwise>
 								</c:choose>
 			                </h7>

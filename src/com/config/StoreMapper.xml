@@ -3,27 +3,107 @@
 <mapper namespace="com.acorn.StoreMapper">
 
 <select id="selectPage" parameterType="hashmap" resultType="StoreDTO">
-	select * from store order by sid desc
+	select * from store 
+	<choose>
+    	<when test="gangnam != null">
+			where addr2 like '강남%'
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+    	</otherwise>
+  </choose>
+  order by sid desc
 </select>
 
-<select id="totRecord" resultType="int">
+<select id="totRecord" parameterType="hashmap"  resultType="int">
 	select count(*) from store
+	<choose>
+    	<when test="gangnam != null">
+			where addr2 like '강남%'
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+    	</otherwise>
+  </choose>
 </select>
 
-<select id="selectTop" resultType="StoreDTO">
+<select id="selectTop" parameterType="hashmap"  resultType="StoreDTO">
 	select * 
-	from (select a.*, nvl(a.rating / decode(a.ratingcnt, 0, null, a.ratingcnt), 0) ratingAvg from store a order by ratingAvg desc)
-	<![CDATA[
-	where ROWNUM < 9
-    ]]>
+	from (select a.*, nvl(a.rating / decode(a.ratingcnt, 0, null, a.ratingcnt), 0) ratingAvg from store a 
+	
+	<choose>
+    	<when test="gangnam != null">
+			where addr2 like '강남%'
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+    	</otherwise>
+  </choose>
+	
+	
+	order by ratingAvg desc)
+
+
+	<choose>
+    	<when test="gangnam != null">
+			where ROWNUM = 1
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+			<![CDATA[
+			where ROWNUM < 9
+		    ]]>
+    	</otherwise>
+  </choose>
+
+	
 </select>
 
-<select id="selectNew" resultType="StoreDTO">
+<select id="selectNew" parameterType="hashmap"  resultType="StoreDTO">
 	select *
-	from (select * from store order by "createAt" desc)
-	<![CDATA[
-	where ROWNUM < 9
-    ]]>
+	from (select * from store 
+	
+	<choose>
+    	<when test="gangnam != null">
+			where addr2 like '강남%'
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+    	</otherwise>
+	</choose>
+	
+	
+	order by "createAt" desc)
+	<choose>
+    	<when test="gangnam != null">
+			where ROWNUM = 1
+    	</when>
+<!--     	<when test="author != null and author.name != null">
+      		AND author_name like #{author.name}
+    	</when>
+ -->    	
+ 		<otherwise>
+			<![CDATA[
+			where ROWNUM < 9
+		    ]]>
+    	</otherwise>
+  </choose>
+
 </select>
 
 <select id="searchKeyword" parameterType="String" resultType="StoreDTO">
