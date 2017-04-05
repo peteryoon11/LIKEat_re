@@ -112,41 +112,6 @@
 }
 
 
-/* carousel */
-body{padding-top:20px;}
-.carousel {
-    margin-bottom: 0;
-    padding: 0 40px 30px 40px;
-}
-/* The controlsy */
-.carousel-control {
-	left: -12px;
-    height: 40px;
-	width: 40px;
-    background: none repeat scroll 0 0 #222222;
-    border: 4px solid #FFFFFF;
-    border-radius: 23px 23px 23px 23px;
-    margin-top: 90px;
-}
-.carousel-control.right {
-	right: -12px;
-}
-/* The indicators */
-.carousel-indicators {
-	right: 50%;
-	top: auto;
-	bottom: -10px;
-	margin-right: -19px;
-}
-/* The colour of the indicators */
-.carousel-indicators li {
-	background: #cecece;
-}
-.carousel-indicators .active {
-background: #428bca;
-}
-/* end carousel */
-
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -178,7 +143,7 @@ background: #428bca;
 	                // 4. ajax를 이용하여 다음페이지의 게시물 데이터를 받아온다.
 	                $.ajax({
 	                    type : 'get',  // list를 요청하는 것이므로, get방식으로 보내도 될듯
-	                    url : 'main/infiniteScrollList.jsp',// 요청할 서버의 url
+	                    url : 'region/infiniteScrollListGangnam.jsp',// 요청할 서버의 url
 						data : {	
 							curPage:curPage
 	                    },
@@ -216,12 +181,6 @@ background: #428bca;
 	        */
 		});// scroll event
 		
- 
-		$('#Carousel').carousel({
-			  interval: 2000
-		})
-		 
-	 
 	});
 </script>
 <body id="mainPage">
@@ -230,101 +189,45 @@ background: #428bca;
 
 		<!-- Page Heading -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-4">
 				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">TOPeat!</h1>
 			</div>
 		</div>
 		<!-- /.row -->
 		<!-- Projects Row -->
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-		            <div id="CarouselTop" class="carousel slide">
-			            <ol class="carousel-indicators">
-			                <li data-target="#CarouselTop" data-slide-to="0" class="active"></li>
-			                <li data-target="#CarouselTop" data-slide-to="1"></li>
-			            </ol>
-		          	  <!-- Carousel items -->
-			            <div class="carousel-inner">
-							<div class="item active">
-								<div class="popup-gallery">
-									<c:forEach items="${topList}" var="topDTO" begin="0" end="3" varStatus="i">
-								  	<div class="col-md-3">
-								  		<a href="DetailPageController?sid=${topDTO.sid}" class="portfolio-box">
-											<div class="thumbnail-wrap">
-												<div class="thumbnail" style="overflow: hidden">
-													<div class="centered">
-														<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-													</div>
-												</div>
-											</div>
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">
-													${topDTO.sname}
-												</div>
-												<div class="project-category text-faded">
-													<c:choose>
-														<c:when test="${0 eq topDTO.ratingCnt}">
-															"아직 별점이 없습니다"							
-														</c:when>
-														<c:otherwise>
-															<c:set value="${topDTO.rating / topDTO.ratingCnt}" var="rate"/>
-							 								<fmt:formatNumber value="${rate }" pattern=".0"/>
-														</c:otherwise>
-													</c:choose>
-													${topDTO.sid}
-						          	 			</div>
-							           		</div>
-						       			</div>
-										</a>
-									</div>
-								</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-			              
-			            	<div class="item">
-								<div class="popup-gallery">
-									<c:forEach items="${topList}" var="topDTO" begin="4" end="7" varStatus="i">
-									  	<div class="col-md-3">
-									  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
-												<div class="thumbnail-wrap">
-													<div class="thumbnail">
-														<div class="centered">
-															<img src="${topDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-														</div>
-													</div>
-												</div>
-												<div class="portfolio-box-caption">
-													<div class="portfolio-box-caption-content">
-														<div class="project-name">
-															${topDTO.sname}
-														</div>
-														<div class="project-category text-faded">
-															<c:choose>
-																<c:when test="${0 eq topDTO.ratingCnt}">
-																	"아직 별점이 없습니다"							
-																</c:when>
-																<c:otherwise>
-								 									<c:set value="${topDTO.rating / topDTO.ratingCnt}" var="rate"/>
-							 										<fmt:formatNumber value="${rate }" pattern=".0"/>
-																</c:otherwise>
-															</c:choose>
-															${topDTO.sid}
-							          	 				</div>
-								           			</div>
-							       				</div>
-											</a>
-										</div>
-									</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-            			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#CarouselTop" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#CarouselTop" class="right carousel-control">›</a>
-           	 		</div><!--.Carousel-->
-				</div> <!-- end : col-md-12 -->
-			</div> <!-- end : row popup-gallery -->
+			<div class="col-md-12">
+			  	<div class="col-md-3">
+			  		<a href="DetailPageController?sid=${topList[0].sid}" class="portfolio-box">
+						<div class="thumbnail-wrap">
+							<div class="thumbnail" style="overflow: hidden">
+								<div class="centered">
+									<img src="${topList[0].imgSrc1}" class="landscape" style="max-width:100%;">
+								</div>
+							</div>
+						</div>
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-name">
+								${topList[0].sname}
+							</div>
+							<div class="project-category text-faded">
+								<c:choose>
+									<c:when test="${0 eq topList[0].ratingCnt}">
+										"아직 별점이 없습니다"							
+									</c:when>
+									<c:otherwise>
+										<c:set value="${topList[0].rating / topList[0].ratingCnt}" var="rate"/>
+		 								<fmt:formatNumber value="${rate }" pattern=".0"/>
+									</c:otherwise>
+								</c:choose>
+								${topList[0].sid}
+	          	 			</div>
+		           		</div>
+	       			</div>
+					</a>
+				</div>
+			</div> <!-- end : col-md-12 -->
 		</div> <!-- end : content container -->
 	</div>
 	<!-- TOPeat! container -->
@@ -332,104 +235,48 @@ background: #428bca;
 
 
 	<!-- NEWeat! container -->
-	<div class="container">
+	<div class="container newContainer" style="padding-top: 50px">
 		<!-- Page Heading -->
 		<div class="row">
-			<div class="col-lg-12">
+			<div class="col-lg-4">
 				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">NEWeat!</h1>
 			</div>
 		</div>
 		<!-- /.row -->
 		<!-- Projects Row -->
 		<div class="container">
-			<div class="row">
-				<div class="col-md-12">
-		            <div id="CarouselNew" class="carousel slide">
-			            <ol class="carousel-indicators">
-			                <li data-target="#CarouselNew" data-slide-to="0" class="active"></li>
-			                <li data-target="#CarouselNew" data-slide-to="1"></li>
-			            </ol>
-		          	  <!-- Carousel items -->
-			            <div class="carousel-inner">
-							<div class="item active">
-								<div class="popup-gallery">
-									<c:forEach items="${newList}" var="newDTO" begin="0" end="3" varStatus="i">
-								  	<div class="col-md-3">
-								  		<a href="${newDTO.imgSrc1}" class="portfolio-box">
-											<div class="thumbnail-wrap">
-												<div class="thumbnail">
-													<div class="centered">
-														<img src="${newDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-													</div>
-												</div>
-											</div>
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">
-													${newDTO.sname}
-												</div>
-												<div class="project-category text-faded">
-													<c:choose>
-														<c:when test="${0 eq newDTO.ratingCnt}">
-															"아직 별점이 없습니다"							
-														</c:when>
-														<c:otherwise>
-							 								<c:set value="${newDTO.rating / newDTO.ratingCnt}" var="rate"/>
-							 								<fmt:formatNumber value="${rate }" pattern=".0"/>
-														</c:otherwise>
-													</c:choose>
-													${newDTO.sid}
-						          	 			</div>
-							           		</div>
-						       			</div>
-										</a>
-									</div>
-								</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-			              
-			            	<div class="item">
-								<div class="popup-gallery">
-									<c:forEach items="${newList}" var="newDTO" begin="4" end="7" varStatus="i">
-									  	<div class="col-md-3">
-									  		<a href="${newDTO.imgSrc1}" class="portfolio-box">
-												<div class="thumbnail-wrap">
-													<div class="thumbnail">
-														<div class="centered">
-															<img src="${newDTO.imgSrc1}" class="landscape" style="max-width:100%;">
-														</div>
-													</div>
-												</div>
-												<div class="portfolio-box-caption">
-													<div class="portfolio-box-caption-content">
-														<div class="project-name">
-															${newDTO.sname}
-														</div>
-														<div class="project-category text-faded">
-															<c:choose>
-																<c:when test="${0 eq newDTO.ratingCnt}">
-																	"아직 별점이 없습니다"							
-																</c:when>
-																<c:otherwise>
-								 									<c:set value="${newDTO.rating / newDTO.ratingCnt}" var="rate"/>
-							 										<fmt:formatNumber value="${rate }" pattern=".0"/>
-																</c:otherwise>
-															</c:choose>
-															${newDTO.sid}
-							          	 				</div>
-								           			</div>
-							       				</div>
-											</a>
-										</div>
-									</c:forEach>
-								</div><!--.popup-gallery-->
-							</div><!--.item-->
-            			</div><!--.carousel-inner-->
-		            	<a data-slide="prev" href="#CarouselNew" class="left carousel-control">‹</a>
-						<a data-slide="next" href="#CarouselNew" class="right carousel-control">›</a>
-           	 		</div><!--.Carousel-->
-				</div> <!-- end : col-md-12 -->
-			</div> <!-- end : row popup-gallery -->
+			<div class="col-md-12">
+			  	<div class="col-md-3">
+			  		<a href="DetailPageController?sid=${newList[0].sid}" class="portfolio-box">
+						<div class="thumbnail-wrap">
+							<div class="thumbnail" style="overflow: hidden">
+								<div class="centered">
+									<img src="${newList[0].imgSrc1}" class="landscape" style="max-width:100%;">
+								</div>
+							</div>
+						</div>
+					<div class="portfolio-box-caption">
+						<div class="portfolio-box-caption-content">
+							<div class="project-name">
+								${newList[0].sname}
+							</div>
+							<div class="project-category text-faded">
+								<c:choose>
+									<c:when test="${0 eq newList[0].ratingCnt}">
+										"아직 별점이 없습니다"							
+									</c:when>
+									<c:otherwise>
+										<c:set value="${newList[0].rating / newList[0].ratingCnt}" var="rate"/>
+		 								<fmt:formatNumber value="${rate }" pattern=".0"/>
+									</c:otherwise>
+								</c:choose>
+								${newList[0].sid}
+	          	 			</div>
+		           		</div>
+	       			</div>
+					</a>
+				</div>
+			</div> <!-- end : col-md-12 -->
 		</div> <!-- end : content container -->
 	</div>
 	<!-- NEWeat! container -->
@@ -486,14 +333,4 @@ background: #428bca;
 	</footer>
 
  
- 
- 
- 
-<!-- jQuery -->
-<!-- 
-
- 	<script src="startbootstrap-4-col-portfolio-gh-pages/js/jquery.js"></script>
-	Bootstrap Core JavaScript
-	<script src="startbootstrap-4-col-portfolio-gh-pages/js/bootstrap.min.js"></script>
- -->
 </body>

@@ -37,19 +37,19 @@ public class RegionGangnamController extends HttpServlet {
 		try {
 			PageDTO pageDTO = service.selectPage(mapperParam);
 			
-//			List<StoreDTO> topList = service.selectTop();
-//			List<StoreDTO> newList = service.selectNew();
-//			
-//			request.setAttribute("pageDTO", pageDTO);
-//			request.setAttribute("topList", topList);
-//			request.setAttribute("newList", newList);
-//			target = "main.jsp";
+			List<StoreDTO> topList = service.selectTop(mapperParam);
+			List<StoreDTO> newList = service.selectNew(mapperParam);
+			
+			request.setAttribute("pageDTO", pageDTO);
+			request.setAttribute("topList", topList);
+			request.setAttribute("newList", newList);
+			target = "gangnam.jsp";
 		} catch (LikeatException e) {
-//			e.printStackTrace();
-//			target = "error.jsp";
-//			request.setAttribute("errorMsg", "목록 불러오기에 실패했어요 :-( ");
-//			request.setAttribute("linkMsg", "메인 다시 둘러보기!");
-//			request.setAttribute("link", "LikeatMainController");
+			e.printStackTrace();
+			target = "error.jsp";
+			request.setAttribute("errorMsg", "강남지역목록 불러오기에 실패했어요 :-( ");
+			request.setAttribute("linkMsg", "메인으로 돌아가기!");
+			request.setAttribute("link", "LikeatMainController");
 		}
 		
 		

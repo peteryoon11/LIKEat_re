@@ -34,7 +34,8 @@ public class StoreService {
 			
 			pageDTO.setList(list);
 			pageDTO.setCurPage(curPage);
-			pageDTO.setTotRecord(totRecord());
+			pageDTO.setTotRecord(totRecord(mapperParam));
+			
 		} catch(Exception e) {	
 			e.printStackTrace();
 			throw new LikeatException("현재 페이지 목록 불러오기 실패!!!!!");
@@ -47,7 +48,7 @@ public class StoreService {
 	}//selectAll
 	
 	
-	public List<StoreDTO> selectTop() throws LikeatException {
+	public List<StoreDTO> selectTop(HashMap<String, String> mapperParam) throws LikeatException {
 		
 		SqlSession session = MySqlSessionFactory.openMySession();
 
@@ -55,7 +56,7 @@ public class StoreService {
 		
 		try{
 			
-			list = session.selectList(namespace + "selectTop");
+			list = session.selectList(namespace + "selectTop", mapperParam);
 			
 		} catch(Exception e) {	
 			e.printStackTrace();
@@ -66,14 +67,14 @@ public class StoreService {
 		return list;
 	}//selectTop
 
-	public List<StoreDTO> selectNew() throws LikeatException {
+	public List<StoreDTO> selectNew(HashMap<String, String> mapperParam) throws LikeatException {
 		
 		SqlSession session = MySqlSessionFactory.openMySession();
 		
 		List<StoreDTO> list = null;
 		
 		try{
-			list = session.selectList(namespace + "selectNew");
+			list = session.selectList(namespace + "selectNew", mapperParam);
 		} catch(Exception e) {	
 			e.printStackTrace();
 			throw new LikeatException("NEW 목록 불러오기 실패!!!!!");
@@ -117,14 +118,14 @@ public class StoreService {
 	}
 
 	
-	public int totRecord() throws LikeatException {
+	public int totRecord(HashMap<String, String> mapperParam) throws LikeatException {
 		int cnt = 0;
 		SqlSession session = MySqlSessionFactory.openMySession();
 		try{
-			cnt = session.selectOne(namespace + "totRecord");
+			cnt = session.selectOne(namespace + "totRecord", mapperParam);
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new LikeatException("식당 토탈 레코드 가져오기 실패!!!!!!!");
+			throw new LikeatException("식당 토탈 레코드 갯수 가져오기 실패!!!!!!!");
 		}finally {
 			session.close();
 		}
