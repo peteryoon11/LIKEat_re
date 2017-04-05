@@ -79,7 +79,8 @@ StoreDTO sDTO = (StoreDTO) request.getAttribute("storeOne");
  	var addr3=' 222 ' ;
 	console.log('<%= addr2 %>');
 	naver.maps.Service.geocode({ // ajax? 
-		address : '마포구 창전동 5-78'
+//		address : '마포구 창전동 5-78'
+address : '<%= addr2 %>'
 <%-- 	
 	address : '<%= addr2 %>'
  --%>
