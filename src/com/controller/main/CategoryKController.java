@@ -18,13 +18,15 @@ import com.service.StoreService;
 public class CategoryKController extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String searchKeyword = request.getParameter("searchKeyword");
+
+		String searchKeyword = "한식";
 		
 		StoreService service = new StoreService();
 		String target = "";
 		
 		try {
-			List<StoreDTO> list = service.searchKeyword(searchKeyword);
+//			List<StoreDTO> list = service.searchKeyword(searchKeyword);
+			List<StoreDTO> list = service.searchCategory(searchKeyword);
 			
 			int resultCnt = service.searchCnt(searchKeyword);
 			
@@ -35,11 +37,11 @@ public class CategoryKController extends HttpServlet {
 				request.setAttribute("resultCnt", resultCnt);
 				System.out.println("검색결과 not null =========> " + list);
 			}
-			target = "search.jsp";
+			target = "korea.jsp";
 		} catch (LikeatException e) {
 			e.printStackTrace();
 			target = "error.jsp";
-			request.setAttribute("errorMsg", "찾기에 실패했어요 :-( ");
+			request.setAttribute("errorMsg", "한식 목록불러오기 실패했어요 :-( ");
 			request.setAttribute("linkMsg", "메인으로 돌아가기!");
 			request.setAttribute("link", "LikeatMainController");
 		}

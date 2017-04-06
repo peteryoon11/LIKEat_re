@@ -118,6 +118,24 @@ public class StoreService {
 	}
 
 	
+
+	public List<StoreDTO> searchCategory(String searchKeyword) throws LikeatException {
+		SqlSession session = MySqlSessionFactory.openMySession();
+		
+		List<StoreDTO> list = null;
+		
+		try{
+			list = session.selectList(namespace + "searchCategory", searchKeyword);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new LikeatException("찾기 목록 불러오기 실패!!!!!");
+		} finally {
+			session.close();
+		}
+		return list;
+	}
+
+	
 	public int totRecord(HashMap<String, String> mapperParam) throws LikeatException {
 		int cnt = 0;
 		SqlSession session = MySqlSessionFactory.openMySession();
@@ -146,13 +164,6 @@ public class StoreService {
 		}
 		return cnt;
 	}
-
-
-
-
-
-
-
 
 
 }
