@@ -83,12 +83,12 @@
 		        	<li class="dropdown-header">지역별</li>
 					<li><a href="RegionGangnamController">강남구</a></li>
 					<li><a href="RegionSongpaController">송파구</a></li>
-					<li><a href="#" class="notyetRegion">용산구</a></li>
+					<li><a href="RegionYongsanController">용산구</a></li>
 					<li><a href="#" class="notyetRegion">강북구</a></li>
 					<li><a href="#" class="notyetRegion">강서구</a></li>
 					<li role="separator" class="divider"></li>
 		        	<li class="dropdown-header">종류별</li>
-					<li><a href="#">한식</a></li>
+					<li><a href="CategoryKController">한식</a></li>
 					<li><a href="#">중식</a></li>
 					<li><a href="#">양식</a></li>
 					<li><a href="#">일식</a></li>

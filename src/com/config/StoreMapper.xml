@@ -8,10 +8,12 @@
     	<when test="gangnam != null">
 			where addr2 like '강남%'
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
+    	<when test="songpa != null">
+			where addr2 like '송파%'
     	</when>
- -->    	
+    	<when test="yongsan != null">
+			where addr2 like '용산%'
+    	</when>
  		<otherwise>
     	</otherwise>
   </choose>
@@ -24,10 +26,12 @@
     	<when test="gangnam != null">
 			where addr2 like '강남%'
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
+    	<when test="songpa != null">
+			where addr2 like '송파%'
     	</when>
- -->    	
+    	<when test="yongsan != null">
+			where addr2 like '용산%'
+    	</when>
  		<otherwise>
     	</otherwise>
   </choose>
@@ -41,26 +45,20 @@
     	<when test="gangnam != null">
 			where addr2 like '강남%'
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
+    	<when test="songpa != null">
+			where addr2 like '송파%'
     	</when>
- -->    	
+    	<when test="yongsan != null">
+			where addr2 like '용산%'
+    	</when>
  		<otherwise>
     	</otherwise>
   </choose>
-	
-	
 	order by ratingAvg desc)
-
-
 	<choose>
-    	<when test="gangnam != null">
+    	<when test="gangnam != null || songpa != null || yongsan != null">
 			where ROWNUM = 1
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
-    	</when>
- -->    	
  		<otherwise>
 			<![CDATA[
 			where ROWNUM < 9
@@ -79,24 +77,20 @@
     	<when test="gangnam != null">
 			where addr2 like '강남%'
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
+    	<when test="songpa != null">
+			where addr2 like '송파%'
     	</when>
- -->    	
+    	<when test="yongsan != null">
+			where addr2 like '용산%'
+    	</when>
  		<otherwise>
     	</otherwise>
 	</choose>
-	
-	
 	order by "createAt" desc)
 	<choose>
-    	<when test="gangnam != null">
+    	<when test="gangnam != null || songpa != null || yongsan != null">
 			where ROWNUM = 1
     	</when>
-<!--     	<when test="author != null and author.name != null">
-      		AND author_name like #{author.name}
-    	</when>
- -->    	
  		<otherwise>
 			<![CDATA[
 			where ROWNUM < 9

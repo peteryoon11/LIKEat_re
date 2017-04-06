@@ -142,7 +142,7 @@
 	                // 4. ajax를 이용하여 다음페이지의 게시물 데이터를 받아온다.
 	                $.ajax({
 	                    type : 'get',  // list를 요청하는 것이므로, get방식으로 보내도 될듯
-	                    url : 'region/infiniteScrollListGangnam.jsp',// 요청할 서버의 url
+	                    url : 'region/infiniteScrollListYongsan.jsp',// 요청할 서버의 url
 						data : {	
 							curPage:curPage
 	                    },
@@ -189,7 +189,7 @@
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-4">
-				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">강남구 TOPeat!</h1>
+				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">용산구 TOPeat!</h1>
 			</div>
 		</div>
 		<!-- /.row -->
@@ -238,7 +238,7 @@
 		<!-- Page Heading -->
 		<div class="row">
 			<div class="col-lg-4">
-				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">강남구 NEWeat!</h1>
+				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">용산구 NEWeat!</h1>
 			</div>
 		</div>
 		<!-- /.row -->
@@ -286,7 +286,7 @@
 		<div class="row">
 			<div class="col-lg-12">
 				<h1 class="page-header" style="color: orange; font-style: italic; font-weight: bold;">
-					강남구 LIKEat! <small>all the list</small>
+					용산구 LIKEat! <small>all the list</small>
 				</h1>
 			</div>
 		</div>
