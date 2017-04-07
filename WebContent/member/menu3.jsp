@@ -1,3 +1,4 @@
+<%@page import="com.entity.MemberDTO"%>
 <%@page import="org.apache.ibatis.session.RowBounds"%>
 <%@page import="com.exception.LikeatException"%>
 <%@page import="com.entity.PageDTO"%>
@@ -9,6 +10,23 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%
+/* 
+String userid = request.getParameter("userid");
+
+SqlSession sqlSession = MySqlSessionFactory.openMySession();
+int exist = 0;
+try{
+	exist = sqlSession.selectOne("com.acorn.MemberMapper.useridCheck", userid);
+} finally {
+	sqlSession.close();
+} */
+//System.out.println("무받 =========> " + request.getParameter("userid"));
+// MemberDTO dto = (MemberDTO)request.getParameter("userid"); */
+
+System.out.println("어트리븉 ==> " + request.getAttribute("userid"));
+ 
+ %>
 <body>
 	<hr/>
 	<div class="container">

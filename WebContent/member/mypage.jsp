@@ -41,12 +41,14 @@ $(document).ready(function() {
  	        	$(this).closest("li").attr("class", "active");
  				console.log('contentPath ===> ' + contentPath);
 	        	
+						console.log('!!!!!!!!!!!!!!!!!!!!!!!' + '${loginfo}');
 	        	
 	        	$.ajax({
-                    type : 'get',  
+                    type : 'post',  
                     url : contentPath,
 					data : {	
-						userid : '${loginfo.userid}' 
+						/* userid : '${loginfo.userid}' */ 
+						userid : '${loginfo}' 
 					},
                     success : function(html){
                         if(html != ""){
