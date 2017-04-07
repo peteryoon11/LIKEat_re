@@ -219,7 +219,8 @@ address : '<%=addr2%>'
 			});
 			
 			</script>
-				<p id="grade">${storeOne.sname} 평점
+				<p id="grade">${storeOne.sname}
+					평점
 					<%-- ${storeOne.rating/storeOne.ratingCnt} --%>
 				</p>
 				<div>
@@ -400,12 +401,36 @@ address : '<%=addr2%>'
 			<div id="map" style="width: 100%; height: 300px;"></div>
 
 		</div>
-		<div>
+		<%-- 
+		<c:forEach var="${sNealist}" items="nStorelist"> --%>
+		<h1>주변 맛집</h1>
+		<c:forEach items="${sNealist}" var="nStorelist">
+			<%-- 	${nStorelist }<br>
+			 --%>
+			<div class="row">
+				<div class="col-sm-6">
+					<img src="${nStorelist.imgSrc1 }" class="img-responsive">
+
+				</div>
+				<div class="col-sm-6">
+					<div>${nStorelist.sname }</div>
+					<div>${nStorelist.addr2 }</div>
+					<div>${nStorelist.sphone1 }- ${nStorelist.sphone2 } -
+						${nStorelist.sphone1 }</div>
+					<div>${nStorelist.menu }</div>
+				</div>
+				<!-- <div class="col-sm-3"></div>
+ -->
+			</div>
+ <br><br>
+		</c:forEach>
+		<!-- 	<div>
 			주변 맛집 정보!!
-			<!-- 
+	 -->
+		<!-- 
 				레스토랑 정보를 받아올 때 위치 값을 받아와서 반경 500m 내외로 
 				맛집 정보를 출력해줌 이때도 동적으로 변함  -->
-			<div class="row">
+		<!-- 		<div class="row">
 				<div class="col-sm-3">음식점 사진</div>
 				<div class="col-sm-3">음식점 정보</div>
 				<div class="col-sm-6"></div>
@@ -414,7 +439,8 @@ address : '<%=addr2%>'
 			<div>음식점 설명!</div>
 
 		</div>
-	</div>
+ -->
+		<!-- 	</div> -->
 	</div>
 	<footer>
 	<div class="row">

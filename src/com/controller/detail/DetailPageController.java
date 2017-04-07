@@ -107,6 +107,26 @@ public class DetailPageController extends HttpServlet {
 			
 				
 		}
+	String searchadd=sdto.getAddr2().substring(4,7).trim();
+	System.out.println(searchadd);
+	System.out.println(searchadd.length());
+	List<StoreDTO> sNealist= service.searchNeaSto(searchadd);
+	// 주위 가게 정보 
+	//rservice
+	for (StoreDTO storeDTO : sNealist) {
+		System.out.println(storeDTO);
+	}
+	/*
+		System.out.println(searchadd.length());
+		System.out.println(searchadd.substring(4, 7));
+		System.out.println(searchadd.substring(4, 7).length());
+		
+		System.out.println(searchadd.substring(4, 7).trim());
+		
+		System.out.println(searchadd.substring(4, 7).trim().length());
+	*/	
+	
+	
 		
 		HashMap<String, Integer> countcarr=new HashMap<>();
 		countcarr.put("recountLow",recountLow );
@@ -115,6 +135,7 @@ public class DetailPageController extends HttpServlet {
 		
 		
 		request.setAttribute("storeOne", sdto);
+		request.setAttribute("sNealist", sNealist);
 		
 		request.setAttribute("sreplylist", rlist);
 	//	request.setAttribute("storelist", slist);

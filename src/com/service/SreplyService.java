@@ -44,5 +44,20 @@ public class SreplyService {
 		}
 		return rcount;
 	}
+	public List<SreplyDTO> searchNeaSto(String addr2) {
+
+		List<SreplyDTO> list = null;
+		int rcount=0;
+		SqlSession session = MySqlSessionFactory.openMySession();
+		try 
+		{
+			list = session.selectList(namespace + "searchNeaSto",addr2);
+		} 
+		finally 
+		{
+			session.close();
+		}
+		return list;
+	}
 	
 }

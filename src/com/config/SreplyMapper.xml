@@ -13,6 +13,5 @@
 	<select id="countReview" resultType="int" parameterType="string">
 	select count(*) from sreply where sid=#{sid}
 	</select>
-	
 
 </mapper>

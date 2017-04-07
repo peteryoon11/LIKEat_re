@@ -13,8 +13,10 @@
 			$.ajax({
 				type : 'post',
 				url : 'list.jsp',
-				data : 1,
-				dataType : 'text',
+				data : {
+					dtt : 1 
+				},
+				dataType : 'html',
 				success : function(data) {
 					$("#listDiv").html(data);
 				}

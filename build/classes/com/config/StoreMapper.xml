@@ -120,4 +120,8 @@
 	select * from store where sid=#{sid}
 </select>
 
+<select id="searchNeaSto" resultType="StoreDTO" parameterType="string">
+	select * from store where addr2 like '%'||#{searchKeyword}||'%'
+</select>
+
 </mapper>

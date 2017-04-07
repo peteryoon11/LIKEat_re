@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 
 import com.dao.MySqlSessionFactory;
 import com.entity.PageDTO;
+import com.entity.SreplyDTO;
 import com.entity.StoreDTO;
 import com.exception.LikeatException;
 
@@ -164,6 +165,20 @@ public class StoreService {
 		}
 		return cnt;
 	}
+	public List<StoreDTO> searchNeaSto(String addr2) {
 
+		List<StoreDTO> list = null;
+		int rcount=0;
+		SqlSession session = MySqlSessionFactory.openMySession();
+		try 
+		{
+			list = session.selectList(namespace + "searchNeaSto",addr2);
+		} 
+		finally 
+		{
+			session.close();
+		}
+		return list;
+	}
 
 }
