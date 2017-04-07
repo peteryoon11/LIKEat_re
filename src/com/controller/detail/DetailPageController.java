@@ -113,11 +113,17 @@ public class DetailPageController extends HttpServlet {
 		countcarr.put("recountMiddle",recountMiddle );
 		countcarr.put("recountHigh",recountHigh );
 		
+		
 		request.setAttribute("storeOne", sdto);
+		
 		request.setAttribute("sreplylist", rlist);
 	//	request.setAttribute("storelist", slist);
+		
 		request.setAttribute("recount", recount);
 		request.setAttribute("countcarr", countcarr);
+		
+		// 주변 맛집 검색하기 위해서 sid 로 불러온 객체의 addr2 의 앞 2개만 잘라서 wild card로 검색 후에 
+		// 
 		
 	//	System.out.println(request.getAttribute("rdata"));
 		

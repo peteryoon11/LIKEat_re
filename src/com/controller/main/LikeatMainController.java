@@ -45,6 +45,7 @@ public class LikeatMainController extends HttpServlet {
 			request.setAttribute("newList", newList);
 			
 			target = "main.jsp";
+			
 		} catch (LikeatException e) {
 			e.printStackTrace();
 			target = "error.jsp";
