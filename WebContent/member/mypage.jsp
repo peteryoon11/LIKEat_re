@@ -28,6 +28,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	
+	
 	$(".tabMenu").on("click", function () {
 		var originId = $(this).attr("id");
 	     $(".tabMenu").each(function () {
@@ -44,16 +46,16 @@ $(document).ready(function() {
                     type : 'get',  
                     url : contentPath,
 					data : {	
-// 						dto:${session.dto} 
-						msg : "hello"
+						userid : '${loginfo.userid}' 
 					},
                     success : function(html){
                         if(html != ""){
                             console.log("성공!! ============> ");
-                            $("#mypageContent").text(html);
+                            $("#mypageContent").empty();
+                            $("#mypageContent").prepend(html);
                         }// if : data!=null
                         else{ 
-                            alert("더 불러올 데이터가 없습니다.");
+                            alert("불러올 데이터가 없습니다.");
                         }// else
                     },// success
                     error:function(request,status,error){
@@ -72,14 +74,14 @@ $(document).ready(function() {
 <div class="container">
 	<h3 style="color: orange; font-style: italic; font-weight: bold;">MyPage</h3>
 	<br/>
-	<ul class="nav nav-tabs">
+	<ul class="nav nav-tabs" style="border-color: brown	;">
 		<li class="active"><a href="#" class="tabMenu" id="menu1">내가 찜한 식당</a></li>
 		<li><a href="#" class="tabMenu" id="menu2">내가 단 댓글</a></li>
 		<li><a href="#" class="tabMenu" id="menu3">내 정보수정하기</a></li>
 	</ul>
 	<br/>
 	<div id="mypageContent">
-		<jsp:include page="menu1.jsp" />
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<jsp:include page="menu1.jsp" />
 	</div>
 </div>
 

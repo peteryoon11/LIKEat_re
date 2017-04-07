@@ -1,3 +1,4 @@
+<%@page import="com.entity.MemberDTO"%>
 <%@page import="org.apache.ibatis.session.RowBounds"%>
 <%@page import="com.exception.LikeatException"%>
 <%@page import="com.entity.PageDTO"%>
@@ -10,4 +11,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<p>댓글!!!!!!!!!!!!!!!!!!!!!!!!</p>
+<%
+	String userid = request.getParameter("userid");
+	System.out.println("userid ===> " + userid);
+%>
+
+댓글

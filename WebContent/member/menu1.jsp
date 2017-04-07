@@ -10,4 +10,4 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<p>내가찜한식당!!!!!!!!!!!</p>
+찜한식당
