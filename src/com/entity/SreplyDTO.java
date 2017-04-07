@@ -15,6 +15,22 @@ public class SreplyDTO {
 	private String rcontent;
 	private String rappr;
 	private String rwrda;
+	private String img1;
+	private String img2;
+	public SreplyDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public SreplyDTO(String sid, String rid, String rcontent, String rappr, String rwrda, String img1, String img2) {
+		super();
+		this.sid = sid;
+		this.rid = rid;
+		this.rcontent = rcontent;
+		this.rappr = rappr;
+		this.rwrda = rwrda;
+		this.img1 = img1;
+		this.img2 = img2;
+	}
 	public String getSid() {
 		return sid;
 	}
@@ -45,21 +61,21 @@ public class SreplyDTO {
 	public void setRwrda(String rwrda) {
 		this.rwrda = rwrda;
 	}
-	public SreplyDTO() {
-		super();
-		// TODO Auto-generated constructor stub
+	public String getImg1() {
+		return img1;
 	}
-	public SreplyDTO(String sid, String rid, String rcontent, String rappr, String rwrda) {
-		super();
-		this.sid = sid;
-		this.rid = rid;
-		this.rcontent = rcontent;
-		this.rappr = rappr;
-		this.rwrda = rwrda;
+	public void setImg1(String img1) {
+		this.img1 = img1;
+	}
+	public String getImg2() {
+		return img2;
+	}
+	public void setImg2(String img2) {
+		this.img2 = img2;
 	}
 	@Override
 	public String toString() {
-		return " " + sid + " " + rid + " " + rcontent + " " + rappr + " " + rwrda ;
+		return " " + sid + " " + rid + " " + rcontent + " " + rappr + " " + rwrda + " " + img1 + " " + img2 + "]";
 	}
 	
 	

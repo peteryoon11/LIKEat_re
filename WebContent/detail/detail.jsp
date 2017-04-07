@@ -67,20 +67,18 @@
 
 	var xcoor;
 	var ycoor;
-<%
-StoreDTO sDTO = (StoreDTO) request.getAttribute("storeOne");
+<%StoreDTO sDTO = (StoreDTO) request.getAttribute("storeOne");
 			String addr2 = sDTO.getAddr2();
-			String test="2fdff";
-			System.out.println(addr2);
-			%>
+			String test = "2fdff";
+			System.out.println(addr2);%>
 		//	var address=${storeOne.sname};
 	
 	var addr2="마포구 창전동 5-78";
  	var addr3=' 222 ' ;
-	console.log('<%= addr2 %>');
+	console.log('<%=addr2%>');
 	naver.maps.Service.geocode({ // ajax? 
 //		address : '마포구 창전동 5-78'
-address : '<%= addr2 %>'
+address : '<%=addr2%>'
 <%-- 	
 	address : '<%= addr2 %>'
  --%>
@@ -208,11 +206,22 @@ address : '<%= addr2 %>'
 	<div class="row">
 		<!-- 아래 음식점 정보와  -->
 	<div class="col-sm-8">
-		.col-sm-4 음식점 정보들과
-
 		<div class="row">
 			<div class="col-sm-8">
-				<p>${storeOne.sname}평점${storeOne.rating/storeOne.ratingCnt}</p>
+				<script type="text/javascript">
+			$(document).ready(function (){
+			
+			var grade1=${storeOne.rating/storeOne.ratingCnt};
+			var grade2=grade1.toFixed(1);
+			document.getElementById("grade").innerHTML+=grade2;
+			//document.getElementById("grade").innerHTML+="1234";
+		
+			});
+			
+			</script>
+				<p id="grade">${storeOne.sname} 평점
+					<%-- ${storeOne.rating/storeOne.ratingCnt} --%>
+				</p>
 				<div>
 					<span class="glyphicon glyphicon-eye-open"></span> <input
 						type="hidden" value="뷰어"> :00 <span
@@ -224,7 +233,7 @@ address : '<%= addr2 %>'
 			</div>
 			<div class="col-sm-4">
 				<span class="glyphicon glyphicon-star-empty " id="starLikeat"></span>
-				별 자리
+
 
 			</div>
 
@@ -274,7 +283,7 @@ address : '<%= addr2 %>'
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-sm-4">~~ 식당의 리뷰 갯수(${recount})</div>
+			<div class="col-sm-3">식당의 리뷰 갯수(${recount})</div>
 
 			<div class="col-sm-3">
 				<input type="button" id="reviewApply"
@@ -282,14 +291,17 @@ address : '<%= addr2 %>'
 
 			</div>
 			<!--  -->
-			<div class="col-sm-5">
+			<div class="col-sm-6">
 
 				<!-- 전체 (33) 맛있다 (20) 괜찮다 (10) 별로 (2)
 					 -->
 				<ul class="breadcrumb">
 					<li><a href="#">전체(${recount})</a></li>
+
 					<li><a href="#">맛있다(${countcarr.recountHigh})</a></li>
+
 					<li><a href="#">괜찮다(${countcarr.recountMiddle})</a></li>
+
 					<li class="active"><a href="#">
 							별로(${countcarr.recountLow})</a></li>
 				</ul>
@@ -308,23 +320,57 @@ address : '<%= addr2 %>'
 		request.setAttribute("storelist", slist);
 		
 		 -->
+
 			<c:forEach items="${sreplylist}" var="abc">
 				<!-- value="Hello World" var="msg"
 			 -->
-				<div>${abc.sid }</div>
+				<%-- <div>${abc.sid }</div>
+				 --%>
+
 				<div class="row">
 					<div class="col-sm-2">
-						<div>글쓴이 프로필 사진</div>
-						<div>글쓴이의 이름</div>
-						<div>글쓴이의 리뷰 갯수</div>
+						<div>
+							<img src="detail/image/prosam.png" width="100px" height="100px">
+						</div>
+						<div>프로맛집러</div>
+						<span class="glyphicon glyphicon-pencil"></span> <input
+							type="hidden" value="리뷰"> :30
+						<div></div>
 					</div>
-					<div class="col-sm-8">
-						<div>리뷰 날짜 2017-03-20</div>
-						실제 리뷰 내용 아래에는 사진 추가 예정
-						<div>사진 파일 들어갈 예정 갯수</div>
+					<div class="col-sm-7">
+						<div>날짜 ${abc.rwrda }</div>
+						내용 <br>${abc.rcontent}
+						<div class="row">
+							<div>
+								<img class="img-responsive col-sm-6" src="${abc.img1}">
+							</div>
+
+							<div>
+
+								<img class="img-responsive col-sm-6" src="${abc.img2}">
+							</div>
+						</div>
 					</div>
 
-					<div class="col-sm-2">평점 이미지로 나올 예정</div>
+					<div class="col-sm-3">
+						<c:if test="${abc.rappr eq '1'}">
+							<img class=" col-sm-6" src="detail/image/low.png" width="100px"
+								height="100px">
+
+							<br>
+						</c:if>
+						<c:if test="${abc.rappr eq '3'}">
+							<img class=" col-sm-6" src="detail/image/avr.png" width="100px"
+								height="100px">
+							<br>
+						</c:if>
+						<c:if test="${abc.rappr eq '5'}">
+							<img class=" col-sm-6" src="detail/image/good.png" width="100px"
+								height="100px">
+							<br>
+						</c:if>
+
+					</div>
 				</div>
 				<hr>
 			</c:forEach>
@@ -348,7 +394,8 @@ address : '<%= addr2 %>'
 	</div>
 
 	<div class="col-sm-4">
-		.col-sm-4
+		<!-- .col-sm-4
+		 -->
 		<div>
 			<div id="map" style="width: 100%; height: 300px;"></div>
 
@@ -373,7 +420,7 @@ address : '<%= addr2 %>'
 	<div class="row">
 		<!-- 아래 음식점 정보와  -->
 		<div class="col-sm-12">
-			bottom 부분 copyright
+			<!-- bottom 부분 copyright -->
 			<ul class="breadcrumb">
 				<li><a href="#">Home</a></li>
 				<li><a href="#">Private</a></li>
@@ -384,12 +431,9 @@ address : '<%= addr2 %>'
 		</div>
 
 	</div>
-	<div>${Rdata}</div>
-	<br>
-	<hr>
-	<div>${storeOne}</div>
+
 	</footer>
-	</div>
+
 
 </body>
 </html>
