@@ -48,7 +48,15 @@
 			alert('아직 준비중입니다 :-)');
 		});
 		
-		
+/*	
+		$("#MyPage").on("click", function(event) {
+			event.preventDefault;
+			
+ 			if() {
+// 로그인이 안되어있을 시, 로그인하고 오라는경고창 띄워야함				
+			}
+ 		});
+*/		
 	});
 </script>
 <body>
@@ -89,10 +97,10 @@
 					<li role="separator" class="divider"></li>
 		        	<li class="dropdown-header">종류별</li>
 					<li><a href="CategoryKController">한식</a></li>
-					<li><a href="#">중식</a></li>
-					<li><a href="#">양식</a></li>
-					<li><a href="#">일식</a></li>
-					<li><a href="#">분식</a></li>
+					<li><a href="CategoryCController">중식</a></li>
+					<li><a href="CategoryFController">양식</a></li>
+					<li><a href="#" class="notyetRegion">일식</a></li>
+					<li><a href="#" class="notyetRegion">분식</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -115,7 +123,7 @@
 				</c:when>
 				<c:otherwise>
 					<li>
-						<a href="">
+						<a href="MyPageController" id="MyPage">
 							<span class="glyphicon glyphicon-cog"></span> 
 							MYPAGE
 						</a>
