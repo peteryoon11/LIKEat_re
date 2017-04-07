@@ -64,11 +64,6 @@ $(document).ready(function() {
 	     });
 	});//click	
 	
-	
-	
-	
-	
-	
 });
 </script>
 <body>
@@ -84,7 +79,7 @@ $(document).ready(function() {
 	</ul>
 	<br/>
 	<div id="mypageContent">
-		
+		<jsp:include page="menu1.jsp" />
 	</div>
 </div>
 
