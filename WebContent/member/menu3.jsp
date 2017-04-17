@@ -11,22 +11,16 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
-/* 
-String userid = request.getParameter("userid");
-
+MemberDTO dto = (MemberDTO)session.getAttribute("loginfo");
 SqlSession sqlSession = MySqlSessionFactory.openMySession();
-int exist = 0;
 try{
-	exist = sqlSession.selectOne("com.acorn.MemberMapper.useridCheck", userid);
+	dto = sqlSession.selectOne("com.acorn.MemberMapper.userInfo", dto.getUserid());
 } finally {
 	sqlSession.close();
-} */
-//System.out.println("무받 =========> " + request.getParameter("userid"));
-// MemberDTO dto = (MemberDTO)request.getParameter("userid"); */
-
-System.out.println("어트리븉 ==> " + request.getAttribute("userid"));
- 
+}  
+System.out.println("무받 =========> " + dto.getEmail());
  %>
+<!--  위에서 받은 dto의 정보를, 칸에 삽입해주기 ==> EL쓸려면, 위에서 requestScope에 담아주던가 해야하나... -->
 <body>
 	<hr/>
 	<div class="container">
@@ -35,7 +29,7 @@ System.out.println("어트리븉 ==> " + request.getAttribute("userid"));
 					<div class="form-group">
 					  <label class="col-md-5 control-label" for="Name">이름</label>  
 					  <div class="col-md-2">
-					  <input id="username" name="username" type="text" class="form-control input-md">
+					  <input id="username" name="username" type="text" class="form-control input-md" readonly="readonly" value="<%=dto.getUsername()%>">
 					  </div>
 					  <span class="formValidation username"></span>
 					</div>
@@ -43,7 +37,7 @@ System.out.println("어트리븉 ==> " + request.getAttribute("userid"));
 					<div class="form-group">
 					  <label class="col-md-5 control-label" for="Name">아이디</label>  
 					  <div class="col-md-2">
-					  <input id="userid" name="userid" type="text" class="form-control input-md">
+					  <input id="userid" name="userid" type="text" class="form-control input-md" readonly="readonly" value="<%=dto.getUserid()%>">
 					  </div>
 					  <span class="formValidation userid"></span>
 					</div>
@@ -98,7 +92,7 @@ System.out.println("어트리븉 ==> " + request.getAttribute("userid"));
 					  <label class="col-md-5 control-label" for="submit"></label>
 					  <div class="col-md-4">
 					  	<input type="reset" id="clearForm" name="clearForm" class="btn btn-primary" style="background-color: orange; border: none;" value="다시 작성하기">
-					    <button id="submit" name="submit" class="btn btn-primary" style="background-color: white; border-color: orange; color: orange; font-weight: bold;">LIKEat NOW!</button>
+					    <button id="submit" name="submit" class="btn btn-primary" style="background-color: white; border-color: orange; color: orange; font-weight: bold;">정보 저장하기</button>
 					  </div>
 					</div>
 				</form>

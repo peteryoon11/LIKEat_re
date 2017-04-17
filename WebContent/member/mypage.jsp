@@ -28,6 +28,9 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
+	$(".notyet").on("click", function() {
+		alert('아직 준비중입니다 :-)');
+	});
 	
 	
 	$(".tabMenu").on("click", function () {
@@ -77,8 +80,8 @@ $(document).ready(function() {
 	<h3 style="color: orange; font-style: italic; font-weight: bold;">MyPage</h3>
 	<br/>
 	<ul class="nav nav-tabs" style="border-color: brown	;">
-		<li class="active"><a href="#" class="tabMenu" id="menu1">내가 찜한 식당</a></li>
-		<li><a href="#" class="tabMenu" id="menu2">내가 단 댓글</a></li>
+		<li class="active"><a href="#" class="notyet tabMenu" id="menu1">내가 찜한 식당</a></li>
+		<li><a href="#" class="notyet tabMenu" id="menu2">내가 단 댓글</a></li>
 		<li><a href="#" class="tabMenu" id="menu3">내 정보수정하기</a></li>
 	</ul>
 	<br/>
