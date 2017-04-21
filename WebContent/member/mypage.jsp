@@ -28,7 +28,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	
-	$(".notyet").on("click", function() {
+	$(".notyet").on("click", function(event) {
+		event.preventDefault();
 		alert('아직 준비중입니다 :-)');
 	});
 	

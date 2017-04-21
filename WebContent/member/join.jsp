@@ -123,6 +123,8 @@ $(document).ready(function() {
 			$(".userpwCheck").text("빈칸없이 입력해주세요");
 		} else if($("#userpwCheck").val().trim().length == 0) {
 			$(".userpwCheck").text("비밀번호를 확인해주세요");
+		} else if($("#userpwCheck").val() != $("#userpw").val()) {
+			$(".userpwCheck").css("color", "red").text("비밀번호를 확인해주세요");
 		} else if($("#email").val().trim().length == 0) {
 			$(".email").text("이메일을 입력해주세요");
 		} else if($("#email").val().length != $('#email').val().replace(/ /g, '').length) {
