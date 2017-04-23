@@ -59,5 +59,20 @@ public class SreplyService {
 		}
 		return list;
 	}
+	public void insertReply(SreplyDTO dto) {
+
+		List<SreplyDTO> list = null;
+		int rcount=0;
+		SqlSession session = MySqlSessionFactory.openMySession();
+		try 
+		{
+			session.insert(namespace + "insertReply",dto);
+		} 
+		finally 
+		{
+			session.close();
+		}
+		
+	}
 	
 }

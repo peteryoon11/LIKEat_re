@@ -5,13 +5,17 @@
 	<select id="selectAll" resultType="SreplyDTO">
 		select * from sreply
 	</select>
-	
+
 	<select id="selectSID" resultType="SreplyDTO" parameterType="string">
 		select * from sreply where sid=#{sid}
 	</select>
-	
+
 	<select id="countReview" resultType="int" parameterType="string">
-	select count(*) from sreply where sid=#{sid}
+		select count(*) from sreply where sid=#{sid}
 	</select>
 
+	<insert id="insertReply" parameterType="SreplyDTO">
+		insert into sreply(sid,rid,rcontent,rappr)
+		values(#{sid},#{rid},#{rcontent},#{rappr})
+	</insert>
 </mapper>
