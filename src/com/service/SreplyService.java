@@ -67,6 +67,7 @@ public class SreplyService {
 		try 
 		{
 			session.insert(namespace + "insertReply",dto);
+		session.commit();
 		} 
 		finally 
 		{
