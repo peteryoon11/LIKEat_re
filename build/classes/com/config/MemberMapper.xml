@@ -15,7 +15,8 @@
 </select>
 
 <insert id="join" parameterType="MemberDTO">
-	insert into member values (#{username}, #{userid}, #{userpw}, #{email}, #{phone1}, #{phone2}, #{phone3})
+	insert into member values (#{username}, #{userid}, #{userpw}, 
+	#{email}, #{phone1}, #{phone2}, #{phone3})
 </insert>
 
 <update id="modify" parameterType="MemberDTO">
