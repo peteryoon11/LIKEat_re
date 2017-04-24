@@ -120,7 +120,6 @@ $(document).ready(function() {
 				  <span class="formValidation userpwCheck"></span>
 				</div>
 
-
 				
 				<!-- Text input-->
 				<div class="form-group">

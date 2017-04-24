@@ -27,6 +27,21 @@ public class MemeberService {
 		}		
 	}//join
 
+	public void modifyMember(MemberDTO dto) throws LikeatException {
+		
+		SqlSession session = MySqlSessionFactory.openMySession();
+		
+		try{
+			session.insert(namespace + "modify", dto);
+			session.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new LikeatException("회원정보수정실패!!!!!!!!!!!!!");
+		} finally {
+			session.close();
+		}		
+	}//modifyMember
+
 	public MemberDTO login(HashMap<String, String> loginfo) throws LikeatException {
 		
 		SqlSession session = MySqlSessionFactory.openMySession();
