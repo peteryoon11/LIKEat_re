@@ -54,9 +54,11 @@
 	<div>
 		<div>
 		<input id="sid" value="s0015">
-		<input id="rid" value="s0015">
+		<inputid="rid" value="r0015">늘어나기? 
+		<input id="">
 		<input id="rcontent" value="s0015">
 		<input id="rappr" value="15">
+		file1:<input type="file" name="file1">
 		</div>
 	</div>
 <button id="requestRe">보내기 </button>

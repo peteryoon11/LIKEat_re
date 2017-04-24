@@ -81,7 +81,7 @@ public class DetailPageController extends HttpServlet {
 		StoreDTO sdto = service.selectOne(sDTO);
 //		List<StoreDTO> slist= service.selectAll();
 		List<SreplyDTO> rlist=rservice.selectSID(sDTO);
-		
+	//	rlist.remove(o)
 		int recount =rservice.countReview(sDTO);
 		int recountLow=0;
 		int recountMiddle=0;
@@ -113,9 +113,25 @@ public class DetailPageController extends HttpServlet {
 	List<StoreDTO> sNealist= service.searchNeaSto(searchadd);
 	// 주위 가게 정보 
 	//rservice
+	System.out.println(sdto.getSname()+" 현재 들어온 가게 정보 ");
+	
+	boolean tt=sNealist.remove(sdto);
+	
+	System.out.println("본인 정보 지워짐? "+tt);
+	
+	// 본인 정보 지우기 위한 소스 index 로 이전 에 있던 부분을 지움 
+	
+	int i=0, temp=0;
 	for (StoreDTO storeDTO : sNealist) {
 		System.out.println(storeDTO);
+		if(storeDTO.getSid().equals(sdto.getSid()))
+		{
+			temp=i;
+		}
+	System.out.println(i++);
 	}
+	sNealist.remove(temp);
+	
 	/*
 		System.out.println(searchadd.length());
 		System.out.println(searchadd.substring(4, 7));

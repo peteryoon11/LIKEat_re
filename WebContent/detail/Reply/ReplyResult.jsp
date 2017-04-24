@@ -30,12 +30,12 @@
 	//int result = Integer.parseInt(v1) + Integer.parseInt(v2);
 	SreplyService service = new SreplyService();
 	service.insertReply(rdto);
-	List<SreplyDTO> sreplylist = service.selectSID("s0016");
+	List<SreplyDTO> sreplylist = service.selectSID(sid);
 	
 	//	System.out.println(request.getParameter("v4"));
-	/* for (SreplyDTO dto : sreplylist) {
+	 for (SreplyDTO dto : sreplylist) {
 		System.out.println(dto);
-	} */
+	} 
 	System.out.println("끝나고 난후 ");
 %>
 <h1>댓글</h1>

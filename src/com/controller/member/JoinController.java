@@ -30,6 +30,7 @@ public class JoinController extends HttpServlet {
 		
 		String target = "";
 		
+		
 		MemeberService service = new MemeberService();
 		try {
 			service.join(dto);

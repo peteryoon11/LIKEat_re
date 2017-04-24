@@ -53,12 +53,42 @@
 
 <script type="text/javascript">
 
+$(document).ready(function() {
+
+	$("#requestRe").on("click", function() {
+		//ajax 통신
+		console.log("requestRe");
+		
+		$.ajax({
+			type : "get",
+			url : "detail/Reply/ReplyResult.jsp",
+
+			data : {
+//				v3 : 's0016',
+				sid : $("#sid").val()
+				, rid : $("#rid").val(),
+				rcontent : $("#rcontent").val(),
+				rappr : $("#rappr").val()
+				 },
+			success : function(html) {
+				$("#replylist_loc").html(html);
+				//(responseData);
+				console.log("success")
+			},
+			error : function(error) {
+				console.log(error);
+			}
+		});
+
+	});
+});
+
 	$(document).ready(
 		function() {
 
 			$(".glyphicon").on("click", function() {
 				$(this).toggleClass("glyphicon-star-empty");
-				$(this).toggleClass("glyphicon-star");
+		$(this).toggleClass("glyphicon-star");
 
 			});
 
@@ -287,8 +317,15 @@ address : '<%=addr2%>'
 			<div class="col-sm-3">식당의 리뷰 갯수(${recount})</div>
 
 			<div class="col-sm-3">
-				<input type="button" id="reviewApply"
-					onclik="javascript:popupOpen();" value="리뷰 등록하기">
+				<div id="test">ddd</div>
+				<div>
+					<div>
+						<input id="sid" value="${storeOne.sid}"> <input id="rid"
+							value="r0015"> <input id="rcontent" value="conten conten">
+						<input id="rappr" value="15">
+					</div>
+				</div>
+				<button id="requestRe">보내기</button>
 
 			</div>
 			<!--  -->
@@ -321,19 +358,20 @@ address : '<%=addr2%>'
 		request.setAttribute("storelist", slist);
 		
 		 -->
-
+			<div id="replylist_loc">
+			
 			<c:forEach items="${sreplylist}" var="abc">
 				<!-- value="Hello World" var="msg"
 			 -->
-				<%-- <div>${abc.sid }</div>
-				 --%>
+				<div>${abc.sid }</div>
+				
 
 				<div class="row">
 					<div class="col-sm-2">
 						<div>
 							<img src="detail/image/prosam.png" width="100px" height="100px">
 						</div>
-						<div>프로맛집러</div>
+						<div>프로맛집러 ${abc.rwrda }</div>
 						<span class="glyphicon glyphicon-pencil"></span> <input
 							type="hidden" value="리뷰"> :30
 						<div></div>
@@ -375,6 +413,8 @@ address : '<%=addr2%>'
 				</div>
 				<hr>
 			</c:forEach>
+			</div>
+
 			<!-- 
 			<div class="row">
 				<div class="col-sm-2">
@@ -415,14 +455,15 @@ address : '<%=addr2%>'
 				<div class="col-sm-6">
 					<div>${nStorelist.sname }</div>
 					<div>${nStorelist.addr2 }</div>
-					<div>${nStorelist.sphone1 }- ${nStorelist.sphone2 } -
-						${nStorelist.sphone1 }</div>
+					<div>${nStorelist.sphone1 }-${nStorelist.sphone2 }-
+						${nStorelist.sphone3 }</div>
 					<div>${nStorelist.menu }</div>
 				</div>
 				<!-- <div class="col-sm-3"></div>
  -->
 			</div>
- <br><br>
+			<br>
+			<br>
 		</c:forEach>
 		<!-- 	<div>
 			주변 맛집 정보!!
