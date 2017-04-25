@@ -3,7 +3,7 @@
 <mapper namespace="com.acorn.SreplyMapper">
 
 	<select id="selectAll" resultType="SreplyDTO">
-		select * from sreply
+		select * from sreply order by RWRDA desc
 	</select>
 
 	<select id="selectSID" resultType="SreplyDTO" parameterType="string">
@@ -15,7 +15,7 @@
 	</select>
 
 	<insert id="insertReply" parameterType="SreplyDTO">
-		insert into sreply(sid,rid,rcontent,rappr)
-		values(#{sid},#{rid},#{rcontent},#{rappr})
+		insert into sreply(sid,rid,rcontent,rappr,userid)
+		values(#{sid},#{rid},#{rcontent},#{rappr},#{userid})
 	</insert>
 </mapper>

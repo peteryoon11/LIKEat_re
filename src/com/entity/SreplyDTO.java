@@ -14,6 +14,13 @@ public class SreplyDTO {
 	private String rid;
 	private String rcontent;
 	private String rappr;
+	private String userid;
+	public String getUserid() {
+		return userid;
+	}
+	public void setUserid(String userid) {
+		this.userid = userid;
+	}
 	private String rwrda;
 	private String img1;
 	private String img2;

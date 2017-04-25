@@ -122,6 +122,7 @@ public class DetailPageController extends HttpServlet {
 	// 본인 정보 지우기 위한 소스 index 로 이전 에 있던 부분을 지움 
 	
 	int i=0, temp=0;
+	
 	for (StoreDTO storeDTO : sNealist) {
 		System.out.println(storeDTO);
 		if(storeDTO.getSid().equals(sdto.getSid()))

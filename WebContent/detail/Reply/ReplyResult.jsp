@@ -15,21 +15,26 @@
 
 	String sid = request.getParameter("sid");
 	String rid = request.getParameter("rid");
+	String userid=request.getParameter("userid");
+	
 	String rcontent = request.getParameter("rcontent");
 	String rappr = request.getParameter("rappr");
 
-	System.out.println(sid + "\t" + rid + "\t" + rcontent + "\t" + rappr + "\t");
+	System.out.println(sid + "\t" + rid + "\t" + rcontent + "\t" + rappr + "\t"+userid);
 	// System.out.println(sid+" ddd");
 
 	SreplyDTO rdto = new SreplyDTO();
 	rdto.setSid(sid);
 	rdto.setRid(rid);
+	rdto.setUserid(userid);
+	
 	rdto.setRcontent(rcontent);
 	rdto.setRappr(rappr);
-
+	
 	//int result = Integer.parseInt(v1) + Integer.parseInt(v2);
 	SreplyService service = new SreplyService();
 	service.insertReply(rdto);
+	
 	List<SreplyDTO> sreplylist = service.selectSID(sid);
 	
 	//	System.out.println(request.getParameter("v4"));
@@ -38,7 +43,6 @@
 	} 
 	System.out.println("끝나고 난후 ");
 %>
-<h1>댓글</h1>
 <c:forEach items="<%=sreplylist%>" var="abc">
 
 	<!-- value="Hello World" var="msg"

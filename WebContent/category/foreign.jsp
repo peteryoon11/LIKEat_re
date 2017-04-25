@@ -66,7 +66,7 @@
 			        <!-- Project One -->
 			        <div class="row">
 			            <div class="col-md-4">
-			                <a href="#">
+			                <a href="DetailPageController?sid=${storeDTO.sid}">
 			                    <img class="img-responsive" src="${storeDTO.imgSrc1 }" alt="">
 			                </a>
 			            </div>

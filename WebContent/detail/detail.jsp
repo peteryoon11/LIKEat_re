@@ -57,8 +57,68 @@ $(document).ready(function() {
 
 	$("#requestRe").on("click", function() {
 		//ajax 통신
-		console.log("requestRe");
+		//var temp=${logininfo};
+		//console.log(temp +" ddd");
+	<%
+	MemberDTO mdto=(MemberDTO)session.getAttribute("loginfo");
+	System.out.println(mdto);
+	String tempid=null;
+	if(mdto==null)
+	{
+		System.out.println("mdto 가 널?");
+			
+	}
+	else
+	{
+		System.out.println("mdto 가 널 아니네");
 		
+	tempid = mdto.getUserid();
+	System.out.println(tempid+"  >>");
+	
+	}
+	%>
+	var temp = '<%= tempid %>';
+		if(temp != null)// null 이 아닐때? 
+		{
+			
+		console.log("requestRe");
+		if($("#rappr").val()!=null)
+		{
+			var temp_total = $('#totalReply').text();
+			
+			$('#totalReply').text(temp_total*1+1);
+			$('#countreview_').text(temp_total*1+1);
+		
+			/* id="totalReply"
+			 */
+			 console.log("working? "+temp_total);
+		  if($("#rappr").val()=='1')
+			{
+			  var temp_total = $('#LowReply').text();
+				
+				$('#LowReply').text(temp_total*1+1);
+				
+			  console.log("1 점 줌");
+			
+			}
+		
+		 else if($("#rappr").val()=='3')
+			{
+			 var temp_total = $('#MiddleReply').text();
+				
+				$('#MiddleReply').text(temp_total*1+1);
+				
+			console.log("3 점 줌");
+			}
+		  else if($("#rappr").val()=='5')
+		 {
+			  var temp_total = $('#HighReply').text();
+				
+				$('#HighReply').text(temp_total*1+1);
+					  
+			console.log("5 점 줌");
+			} 
+		}
 		$.ajax({
 			type : "get",
 			url : "detail/Reply/ReplyResult.jsp",
@@ -68,7 +128,8 @@ $(document).ready(function() {
 				sid : $("#sid").val()
 				, rid : $("#rid").val(),
 				rcontent : $("#rcontent").val(),
-				rappr : $("#rappr").val()
+				rappr : $("#rappr").val(),
+				userid : $("#userid").val()
 				 },
 			success : function(html) {
 				$("#replylist_loc").html(html);
@@ -80,6 +141,11 @@ $(document).ready(function() {
 			}
 		});
 
+	}
+		else
+		{
+			alert("로그인 하고 글을 쓸수 있어요!");
+		}
 	});
 });
 
@@ -300,7 +366,7 @@ address : '<%=addr2%>'
 					</tr>
 					<tr>
 						<td>전화번호 :</td>
-						<td><span>${storeOne.sphone1}-${storeOne.sphone2}-${storeOne.sphone2}</span></td>
+						<td><span>${storeOne.sphone1}-${storeOne.sphone2}-${storeOne.sphone3}</span></td>
 					</tr>
 					<tr>
 						<td>가격대 :</td>
@@ -314,35 +380,44 @@ address : '<%=addr2%>'
 		</div>
 		<hr>
 		<div class="row">
-			<div class="col-sm-3">식당의 리뷰 갯수(${recount})</div>
+			<div class="col-sm-2">식당의 리뷰 갯수(<span id="countreview_">${recount}</span>)</div>
 
-			<div class="col-sm-3">
-				<div id="test">ddd</div>
+			<div class="col-sm-6">
+
 				<div>
 					<div>
-						<input id="sid" value="${storeOne.sid}"> 
-						<input id="rid"
-							value="r0015"> <input id="rcontent" value="conten conten">
-						<input id="rappr" value="5">
+						<input id="sid" type="hidden" value="${storeOne.sid}"> <input
+							id="rid" type="hidden" value="${storeOne.sid}-${recount+1}">
+						<!-- 	<input id="rcontent" value="conten conten">
+					 -->
+						<textarea id="rcontent" rows="5" cols="40"></textarea>
+						<!-- <input id="rappr" value="5">
+						 -->
+					<%-- 	 ${loginfo}
+					 --%>
+					 	<select id="rappr">
+							<option value="5">5</option>
+							<option value="3">3</option>
+							<option value="1">1</option>
+						</select> userid <input id="userid" value="${loginfo.userid}">
 					</div>
 				</div>
 				<button id="requestRe">보내기</button>
 
 			</div>
 			<!--  -->
-			<div class="col-sm-6">
+			<div class="col-sm-4">
 
 				<!-- 전체 (33) 맛있다 (20) 괜찮다 (10) 별로 (2)
 					 -->
 				<ul class="breadcrumb">
-					<li><a href="#">전체(${recount})</a></li>
+					<li><a  href="#">전체(<span id="totalReply">${recount}</span>)</a></li>
 
-					<li><a href="#">맛있다(${countcarr.recountHigh})</a></li>
+					<li><a  href="#">맛있다(<span id="HighReply">${countcarr.recountHigh}</span>)</a></li>
 
-					<li><a href="#">괜찮다(${countcarr.recountMiddle})</a></li>
+					<li><a  href="#">괜찮다(<span id="MiddleReply">${countcarr.recountMiddle}</span>)</a></li>
 
-					<li class="active"><a href="#">
-							별로(${countcarr.recountLow})</a></li>
+					<li> <a  href="#">별로(<span id="LowReply">${countcarr.recountLow}</span>)</a></li>
 				</ul>
 
 			</div>
@@ -359,61 +434,62 @@ address : '<%=addr2%>'
 		request.setAttribute("storelist", slist);
 		
 		 -->
+		 <h1>댓글</h1>
 			<div id="replylist_loc">
-			
-			<c:forEach items="${sreplylist}" var="abc">
-				<!-- value="Hello World" var="msg"
+
+				<c:forEach items="${sreplylist}" var="abc">
+					<!-- value="Hello World" var="msg"
 			 -->
-				<div>${abc.sid }</div>
-				
+					<div>${abc.sid }</div>
 
-				<div class="row">
-					<div class="col-sm-2">
-						<div>
-							<img src="detail/image/prosam.png" width="100px" height="100px">
-						</div>
-						<div>프로맛집러 ${abc.rwrda }</div>
-						<span class="glyphicon glyphicon-pencil"></span> <input
-							type="hidden" value="리뷰"> :30
-						<div></div>
-					</div>
-					<div class="col-sm-7">
-						<div>날짜 ${abc.rwrda }</div>
-						내용 <br>${abc.rcontent}
-						<div class="row">
+
+					<div class="row">
+						<div class="col-sm-2">
 							<div>
-								<img class="img-responsive col-sm-6" src="${abc.img1}">
+								<img src="detail/image/prosam.png" width="100px" height="100px">
 							</div>
+							<div>프로맛집러 ${abc.rwrda }</div>
+							<span class="glyphicon glyphicon-pencil"></span> <input
+								type="hidden" value="리뷰"> :30
+							<div></div>
+						</div>
+						<div class="col-sm-7">
+							<div>날짜 ${abc.rwrda }</div>
+							내용 <br>${abc.rcontent}
+							<div class="row">
+								<div>
+									<img class="img-responsive col-sm-6" src="${abc.img1}">
+								</div>
 
-							<div>
+								<div>
 
-								<img class="img-responsive col-sm-6" src="${abc.img2}">
+									<img class="img-responsive col-sm-6" src="${abc.img2}">
+								</div>
 							</div>
 						</div>
+
+						<div class="col-sm-3">
+							<c:if test="${abc.rappr eq '1'}">
+								<img class=" col-sm-6" src="detail/image/low.png" width="100px"
+									height="100px">
+
+								<br>
+							</c:if>
+							<c:if test="${abc.rappr eq '3'}">
+								<img class=" col-sm-6" src="detail/image/avr.png" width="100px"
+									height="100px">
+								<br>
+							</c:if>
+							<c:if test="${abc.rappr eq '5'}">
+								<img class=" col-sm-6" src="detail/image/good.png" width="100px"
+									height="100px">
+								<br>
+							</c:if>
+
+						</div>
 					</div>
-
-					<div class="col-sm-3">
-						<c:if test="${abc.rappr eq '1'}">
-							<img class=" col-sm-6" src="detail/image/low.png" width="100px"
-								height="100px">
-
-							<br>
-						</c:if>
-						<c:if test="${abc.rappr eq '3'}">
-							<img class=" col-sm-6" src="detail/image/avr.png" width="100px"
-								height="100px">
-							<br>
-						</c:if>
-						<c:if test="${abc.rappr eq '5'}">
-							<img class=" col-sm-6" src="detail/image/good.png" width="100px"
-								height="100px">
-							<br>
-						</c:if>
-
-					</div>
-				</div>
-				<hr>
-			</c:forEach>
+					<hr>
+				</c:forEach>
 			</div>
 
 			<!-- 
@@ -449,22 +525,23 @@ address : '<%=addr2%>'
 			<%-- 	${nStorelist }<br>
 			 --%>
 			<div class="row">
-				<div class="col-sm-6">
-					<img src="${nStorelist.imgSrc1 }" class="img-responsive">
+				<a href="DetailPageController?sid=${nStorelist.sid}">
+					<div class="col-sm-6">
+						<img src="${nStorelist.imgSrc1 }" class="img-responsive">
 
-				</div>
-				<div class="col-sm-6">
-					<div>${nStorelist.sname }</div>
-					<div>${nStorelist.addr2 }</div>
-					<div>${nStorelist.sphone1 }-${nStorelist.sphone2 }-
-						${nStorelist.sphone3 }</div>
-					<div>${nStorelist.menu }</div>
-				</div>
-				<!-- <div class="col-sm-3"></div>
+					</div>
+					<div class="col-sm-6">
+						<div>${nStorelist.sname }</div>
+						<div>${nStorelist.addr2 }</div>
+						<div>${nStorelist.sphone1 }-${nStorelist.sphone2 }-
+							${nStorelist.sphone3 }</div>
+						<div>${nStorelist.menu }</div>
+					</div> <!-- <div class="col-sm-3"></div>
  -->
 			</div>
 			<br>
 			<br>
+			</a>
 		</c:forEach>
 		<!-- 	<div>
 			주변 맛집 정보!!
@@ -484,24 +561,13 @@ address : '<%=addr2%>'
  -->
 		<!-- 	</div> -->
 	</div>
-	<footer>
-	<div class="row">
-		<!-- 아래 음식점 정보와  -->
-		<div class="col-sm-12">
-			<!-- bottom 부분 copyright -->
-			<ul class="breadcrumb">
-				<li><a href="#">Home</a></li>
-				<li><a href="#">Private</a></li>
-				<li><a href="#">Pictures</a></li>
-				<li class="active">Vacation</li>
-			</ul>
-
-		</div>
-
-	</div>
-
+	<footer class="container-fluid text-center"> <a
+		href="#mainPage" title="맨 위로"> <span
+		class="glyphicon glyphicon-chevron-up" style="color: orange;"></span>
+	</a> <br />
+	<br />
+	<p>Copyright &copy; LIKEat Project 2017</p>
 	</footer>
-
-
+${logininfo}
 </body>
 </html>
