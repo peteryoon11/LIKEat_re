@@ -320,9 +320,10 @@ address : '<%=addr2%>'
 				<div id="test">ddd</div>
 				<div>
 					<div>
-						<input id="sid" value="${storeOne.sid}"> <input id="rid"
+						<input id="sid" value="${storeOne.sid}"> 
+						<input id="rid"
 							value="r0015"> <input id="rcontent" value="conten conten">
-						<input id="rappr" value="15">
+						<input id="rappr" value="5">
 					</div>
 				</div>
 				<button id="requestRe">보내기</button>

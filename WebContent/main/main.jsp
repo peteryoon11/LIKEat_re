@@ -287,7 +287,7 @@ background: #428bca;
 								<div class="popup-gallery">
 									<c:forEach items="${topList}" var="topDTO" begin="4" end="7" varStatus="i">
 									  	<div class="col-md-3">
-									  		<a href="${topDTO.imgSrc1}" class="portfolio-box">
+									  		<a href="DetailPageController?sid=${topDTO.sid}" class="portfolio-box">
 												<div class="thumbnail-wrap">
 													<div class="thumbnail">
 														<div class="centered">
@@ -355,7 +355,7 @@ background: #428bca;
 								<div class="popup-gallery">
 									<c:forEach items="${newList}" var="newDTO" begin="0" end="3" varStatus="i">
 								  	<div class="col-md-3">
-								  		<a href="${newDTO.imgSrc1}" class="portfolio-box">
+								  		<a href="DetailPageController?sid=${newDTO.sid}" class="portfolio-box">
 											<div class="thumbnail-wrap">
 												<div class="thumbnail">
 													<div class="centered">
@@ -392,7 +392,7 @@ background: #428bca;
 								<div class="popup-gallery">
 									<c:forEach items="${newList}" var="newDTO" begin="4" end="7" varStatus="i">
 									  	<div class="col-md-3">
-									  		<a href="${newDTO.imgSrc1}" class="portfolio-box">
+									  		<a href="DetailPageController?sid=${newDTO.sid}" class="portfolio-box">
 												<div class="thumbnail-wrap">
 													<div class="thumbnail">
 														<div class="centered">
@@ -452,7 +452,7 @@ background: #428bca;
             <div class="row popup-gallery">
 				<c:forEach items="${pageDTO.list}" var="s" varStatus="i">
 					<div class="col-lg-3 col-sm-6">
-					    <a href="${s.imgSrc1}" class="portfolio-box">
+					    <a href="DetailPageController?sid=${s.sid}" class="portfolio-box">
 					        <img src="${s.imgSrc1}" class="img-responsive" alt="" >
 					        <div class="portfolio-box-caption">
 					            <div class="portfolio-box-caption-content">
