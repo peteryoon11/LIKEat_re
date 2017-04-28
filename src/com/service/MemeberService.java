@@ -32,7 +32,7 @@ public class MemeberService {
 		SqlSession session = MySqlSessionFactory.openMySession();
 		
 		try{
-			session.insert(namespace + "modify", dto);
+			session.update(namespace + "modify", dto);
 			session.commit();
 		} catch (Exception e) {
 			e.printStackTrace();
